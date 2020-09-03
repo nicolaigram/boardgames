@@ -10,7 +10,7 @@ export default function DiceIcon({
   amount: number;
   rule: string;
 }) {
-  const url = "/dice/" + name;
+  const url = "/boardgames/dice/" + name;
   const size = 50;
   return (
     <RuleContainer>

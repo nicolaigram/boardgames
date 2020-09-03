@@ -48,7 +48,7 @@ export default function RulesPage() {
 }
 
 const Background = styled.div`
-  background: url("/bg.png");
+  background: url("/boardgames/bg.png");
   background-position: center;
   background-size: cover;
   height: 100vh;
