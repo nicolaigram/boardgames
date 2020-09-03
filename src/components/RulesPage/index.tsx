@@ -44,7 +44,7 @@ export default function RulesPage() {
         <DiceIcon name="06_star.png" amount={3} rule="Take Superstar card" />
         <div>
           <p style={{ color: "white" }}>
-            *Unless you have the Superstar card (Read rules on card)
+            *If you have the Superstar card; x victory points
           </p>
         </div>
       </Overlay>
