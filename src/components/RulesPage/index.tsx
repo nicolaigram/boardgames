@@ -40,8 +40,11 @@ export default function RulesPage() {
           />
         </Flex>
 
-        <DiceIcon name="06_star.png" amount={1} rule="Nothing*" />
-        <DiceIcon name="06_star.png" amount={3} rule="Take Superstar card" />
+        <Flex>
+          <DiceIcon name="06_star.png" amount={1} rule="Nothing*" />
+          <DiceIcon name="06_star.png" amount={3} rule="Take Superstar card" />
+        </Flex>
+
         <div>
           <p style={{ color: "white" }}>
             *If you have the Superstar card; x victory points
