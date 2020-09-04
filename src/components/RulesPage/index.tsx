@@ -46,9 +46,7 @@ export default function RulesPage() {
         </Flex>
 
         <div>
-          <p style={{ color: "white" }}>
-            *If you have the Superstar card; x victory points
-          </p>
+          <p>*If you have the Superstar card; x victory points</p>
         </div>
       </Overlay>
     </Background>
@@ -56,16 +54,28 @@ export default function RulesPage() {
 }
 
 const Background = styled.div`
-  background: url("/boardgames/bg.png");
-  background-position: center;
-  background-size: cover;
   height: 100vh;
-  padding: 50px;
+  width: 100vw;
+  overflow: auto;
+
+  &::before {
+    background-image: url("/boardgames/bg.png");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    filter: brightness(50%);
+  }
 `;
 
 const Overlay = styled.div`
   padding: 25px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+  margin: 0 50px;
+  margin-top: 50px;
 `;
 
 const Flex = styled.div`

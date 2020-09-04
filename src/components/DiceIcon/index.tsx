@@ -33,5 +33,4 @@ export default function DiceIcon({
 const RuleContainer = styled.div`
   display: flex;
   margin-bottom: 20px;
-  color: white;
 `;
