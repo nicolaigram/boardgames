@@ -15,7 +15,7 @@ export default function RulesPage() {
           amount={1}
           rule="Damage x to buildings or units"
         />
-        <DiceIcon name="03_energy.png" amount={3} rule="Take x energy" />
+        <DiceIcon name="03_energy.png" amount={1} rule="Take x energy" />
         <DiceIcon
           name="04_skull.png"
           amount={1}
