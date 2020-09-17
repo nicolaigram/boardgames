@@ -76,6 +76,7 @@ const Overlay = styled.div`
   background: rgba(255, 255, 255, 0.8);
   margin: 0 50px;
   margin-top: 50px;
+  border-radius: 20px;
 `;
 
 const Flex = styled.div`
