@@ -47,6 +47,7 @@ const StyledPage = styled.div`
 
 const PlayersContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const Player: any = styled.div`
