@@ -6,11 +6,15 @@ import KingOfNewYork from "./pages/KingOfNewYork";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import StarRealms from "./pages/StarRealms";
+import Munchkin from "./pages/Munchkin";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path={process.env.PUBLIC_URL + "/munchkin"}>
+          <Munchkin />
+        </Route>
         <Route path={process.env.PUBLIC_URL + "/star-realms"}>
           <StarRealms />
         </Route>

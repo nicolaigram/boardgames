@@ -9,6 +9,7 @@ export default function Home() {
         King of New York
       </Link>
       <Link to={process.env.PUBLIC_URL + "/star-realms"}>Star Realms</Link>
+      <Link to={process.env.PUBLIC_URL + "/munchkin"}>Munchkin</Link>
     </StyledPage>
   );
 }
