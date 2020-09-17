@@ -2,11 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import RulesPage from "./components/RulesPage";
+import KingOfNewYork from "./pages/KingOfNewYork";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RulesPage />
+    <Router>
+      <Switch>
+        <Route path="/king-of-new-york">
+          <KingOfNewYork />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

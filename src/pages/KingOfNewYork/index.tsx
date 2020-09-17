@@ -1,8 +1,8 @@
 import React from "react";
-import DiceIcon from "../DiceIcon";
+import DiceIcon from "../../components/DiceIcon";
 import styled from "@emotion/styled";
 
-export default function RulesPage() {
+export default function KingOfNewYork() {
   return (
     <Background>
       <Overlay>
