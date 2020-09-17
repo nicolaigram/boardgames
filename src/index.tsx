@@ -5,11 +5,15 @@ import * as serviceWorker from "./serviceWorker";
 import KingOfNewYork from "./pages/KingOfNewYork";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
+import StarRealms from "./pages/StarRealms";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path="/star-realms">
+          <StarRealms />
+        </Route>
         <Route path="/king-of-new-york">
           <KingOfNewYork />
         </Route>
