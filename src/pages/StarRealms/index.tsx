@@ -10,8 +10,10 @@ export default function StarRealms() {
     createPlayer(),
   ]);
   const setHp = (playerIndex: number, amount: number) => {
-    const sound = new Audio("/boardgames/laser_shot.mp3");
-    sound.play();
+    if (amount < 0) {
+      const sound = new Audio("/boardgames/star-realms/laser_shot.mp3");
+      sound.play();
+    }
     const copy = [...players];
     copy[playerIndex].hp = copy[playerIndex].hp + amount;
     setPlayers(copy);
@@ -22,10 +24,14 @@ export default function StarRealms() {
       <PlayersContainer>
         {players.map((player, index) => (
           <Player hp={player.hp}>
-            <p>{"Player " + (index + 1)}</p>
-            <p>{"HP " + player.hp}</p>
-            <button onClick={() => setHp(index, 1)}>+1</button>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <p>{"Player " + (index + 1)}</p>
+              <p>{"HP " + player.hp}</p>
+            </div>
+            <button onClick={() => setHp(index, -5)}>-5</button>
             <button onClick={() => setHp(index, -1)}>-1</button>
+            <button onClick={() => setHp(index, 1)}>+1</button>
+            <button onClick={() => setHp(index, 5)}>+5</button>
           </Player>
         ))}
       </PlayersContainer>
@@ -34,33 +40,50 @@ export default function StarRealms() {
 }
 
 function getPlayerColor(hp: number) {
-  if (hp < 10) return "red";
-  if (hp < 25) return "yellow";
-  return "green";
+  if (hp < 10) return "#B81D13";
+  if (hp < 25) return "#EFB700";
+  return "#008450";
 }
 
 const StyledPage = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 80px;
+  padding-top: 20px;
+  min-height: 100vh;
+  background: url("/boardgames/star-realms/star-wars-backgrounds-14.jpg");
+  animation: 10s bg alternate infinite;
+  background-position: center;
+  @keyframes bg {
+    0% {
+      background-size: 100%;
+    }
+    100% {
+      background-size: 120%;
+    }
+  }
 `;
 
 const PlayersContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 const Player: any = styled.div`
   border: 1px solid black;
-  padding: 20px;
-  font-size: 24px;
+  padding: 16px;
+  font-size: 30px;
   background-color: ${(props: any) => getPlayerColor(props.hp)};
-  &:not(:first-of-type) {
-    margin-left: 20px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+  p {
+    margin: 0 0 10px;
   }
   button {
     height: 80px;
     width: 100px;
     font-size: 24px;
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
   }
 `;
