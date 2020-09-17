@@ -11,13 +11,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/star-realms">
+        <Route path={process.env.PUBLIC_URL + "/star-realms"}>
           <StarRealms />
         </Route>
-        <Route path="/king-of-new-york">
+        <Route path={process.env.PUBLIC_URL + "/king-of-new-york"}>
           <KingOfNewYork />
         </Route>
-        <Route path="/">
+        <Route path={process.env.PUBLIC_URL + "/"}>
           <Home />
         </Route>
       </Switch>
