@@ -35,7 +35,7 @@ export default function KingOfNewYork() {
           <DiceIcon name="05_claw.png" amount={1} rule="Do x damage" />
           <DiceIcon
             name="05_claw.png"
-            amount={3}
+            amount={4}
             rule="Berserk (if using expansion)"
           />
         </Flex>
