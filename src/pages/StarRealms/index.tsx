@@ -9,9 +9,10 @@ export default function StarRealms() {
     createPlayer(),
     createPlayer(),
   ]);
+  const sound = new Audio("/boardgames/star-realms/laser_shot.mp3");
+
   const setHp = (playerIndex: number, amount: number) => {
     if (amount < 0) {
-      const sound = new Audio("/boardgames/star-realms/laser_shot.mp3");
       sound.play();
     }
     const copy = [...players];
