@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <StyledPage>
-      <Link to="/king-of-new-york">King of New York</Link>
-      <Link to="/star-realms">Star Realms</Link>
+      <Link to={process.env.PUBLIC_URL + "/king-of-new-york"}>
+        King of New York
+      </Link>
+      <Link to={process.env.PUBLIC_URL + "/star-realms"}>Star Realms</Link>
     </StyledPage>
   );
 }
