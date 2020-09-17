@@ -16,7 +16,10 @@ export default function StarRealms() {
       sound.play();
     }
     const copy = [...players];
-    copy[playerIndex].hp = copy[playerIndex].hp + amount;
+    const currentHp = copy[playerIndex].hp;
+    let newHp = currentHp + amount;
+    if (newHp < 0) newHp = 0;
+    copy[playerIndex].hp = newHp;
     setPlayers(copy);
   };
 
@@ -41,6 +44,7 @@ export default function StarRealms() {
 }
 
 function getPlayerColor(hp: number) {
+  if (hp <= 0) return "#333";
   if (hp < 10) return "#B81D13";
   if (hp < 25) return "#EFB700";
   return "#008450";
