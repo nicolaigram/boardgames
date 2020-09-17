@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { create } from "domain";
 import React, { useState } from "react";
+import LaserShot from "./LaserShot";
 import PlayersPrompt from "./PlayersPrompt";
 
 interface Player {
@@ -107,6 +108,7 @@ const Player: any = styled.div`
   background-color: ${(props: any) => getPlayerColor(props.hp)};
   margin-bottom: 20px;
   opacity: 0.9;
+  border-radius: 12px;
   p {
     margin: 0 0 10px;
   }
@@ -114,6 +116,7 @@ const Player: any = styled.div`
     height: 80px;
     width: 100px;
     font-size: 24px;
+    border: 0;
     &:not(:last-of-type) {
       margin-right: 10px;
     }
