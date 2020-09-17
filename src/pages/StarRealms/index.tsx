@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { create } from "domain";
 import React, { useState } from "react";
+import { start } from "repl";
 import LaserShot from "./LaserShot";
 import PlayersPrompt from "./PlayersPrompt";
 
@@ -9,7 +10,8 @@ interface Player {
 }
 
 export default function StarRealms() {
-  const createPlayer = (): Player => ({ hp: 50 });
+  const [startHp, setStartHp] = useState(50);
+  const createPlayer = (): Player => ({ hp: startHp });
   const [players, setPlayers] = useState<Player[]>([]);
   const [showDialog, setShowDialog] = useState("player-count");
 
@@ -50,15 +52,19 @@ export default function StarRealms() {
       )}
       <PlayersContainer>
         {players.map((player, index) => (
-          <Player hp={player.hp}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Player>
+            <HealthBar percentage={(player.hp / startHp) * 100}>
+              <span>{player.hp}</span>
+            </HealthBar>
+            {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
               <p>{"Player " + (index + 1)}</p>
-              <p>{"HP " + player.hp}</p>
+            </div> */}
+            <div style={{ paddingTop: "16px" }}>
+              <button onClick={() => setHp(index, -5)}>-5</button>
+              <button onClick={() => setHp(index, -1)}>-1</button>
+              <button onClick={() => setHp(index, 1)}>+1</button>
+              <button onClick={() => setHp(index, 5)}>+5</button>
             </div>
-            <button onClick={() => setHp(index, -5)}>-5</button>
-            <button onClick={() => setHp(index, -1)}>-1</button>
-            <button onClick={() => setHp(index, 1)}>+1</button>
-            <button onClick={() => setHp(index, 5)}>+5</button>
           </Player>
         ))}
       </PlayersContainer>
@@ -70,10 +76,10 @@ export default function StarRealms() {
   );
 }
 
-function getPlayerColor(hp: number) {
-  if (hp <= 0) return "#333";
-  if (hp < 10) return "#B81D13";
-  if (hp < 25) return "#EFB700";
+function getPlayerColor(percentage: number) {
+  if (percentage <= 0) return "#333";
+  if (percentage <= 25) return "#B81D13";
+  if (percentage <= 50) return "#EFB700";
   return "#008450";
 }
 
@@ -101,14 +107,16 @@ const PlayersContainer = styled.div`
   flex-direction: column;
 `;
 
-const Player: any = styled.div`
+const Player = styled.div`
   border: 1px solid black;
+  overflow: hidden;
   padding: 16px;
   font-size: 30px;
-  background-color: ${(props: any) => getPlayerColor(props.hp)};
+  background-color: #eee;
   margin-bottom: 20px;
   opacity: 0.9;
-  border-radius: 12px;
+  border-radius: 20px;
+  border: 10px solid #333;
   p {
     margin: 0 0 10px;
   }
@@ -117,8 +125,32 @@ const Player: any = styled.div`
     width: 100px;
     font-size: 24px;
     border: 0;
+    background-color: #ccc;
     &:not(:last-of-type) {
       margin-right: 10px;
     }
+  }
+`;
+
+const HealthBar: any = styled.div`
+  height: 60px;
+  width: calc(100% + 32px);
+  background: black;
+  margin-left: -16px;
+  margin-top: -16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    position: absolute;
+    color: white;
+  }
+  &::after {
+    content: "";
+    background: ${(props: any) => getPlayerColor(props.percentage)};
+    display: block;
+    height: 100%;
+    width: ${(props: any) => props.percentage + "%"};
   }
 `;
