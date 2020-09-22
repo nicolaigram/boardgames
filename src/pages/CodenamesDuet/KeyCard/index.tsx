@@ -82,11 +82,11 @@ const StyledPage = styled.div`
   .keys {
     @media all and (orientation: landscape) {
       width: 90vh;
-      height: 60vh;
+      height: 70vh;
     }
     @media all and (orientation: portrait) {
       width: 90vw;
-      height: 60vw;
+      height: 70vw;
     }
 
     display: flex;
