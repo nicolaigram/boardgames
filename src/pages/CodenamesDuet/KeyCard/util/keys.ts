@@ -221,6 +221,150 @@ const keys: any = {
     KeyState.BYSTANDER,
     KeyState.BYSTANDER,
   ],
+  "4a": [
+    /* ROW 1 */
+    KeyState.SPY,
+    KeyState.ASSASSIN,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+
+    /* ROW 2 */
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+
+    /* ROW 3 */
+    KeyState.ASSASSIN,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.ASSASSIN,
+    KeyState.SPY,
+
+    /* ROW 4 */
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+
+    /* ROW 5 */
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+  ],
+  "4b": [
+    /* ROW 1 */
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.SPY,
+
+    /* ROW 2 */
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.ASSASSIN,
+
+    /* ROW 3 */
+    KeyState.SPY,
+    KeyState.ASSASSIN,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+
+    /* ROW 4 */
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+
+    /* ROW 5 */
+    KeyState.ASSASSIN,
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+  ],
+  "5a": [
+    /* ROW 1 */
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+
+    /* ROW 2 */
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.ASSASSIN,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+
+    /* ROW 3 */
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.SPY,
+
+    /* ROW 4 */
+    KeyState.ASSASSIN,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.ASSASSIN,
+
+    /* ROW 5 */
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+  ],
+  "5b": [
+    /* ROW 1 */
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+
+    /* ROW 2 */
+    KeyState.ASSASSIN,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.ASSASSIN,
+    KeyState.SPY,
+
+    /* ROW 3 */
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+
+    /* ROW 4 */
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.BYSTANDER,
+    KeyState.SPY,
+
+    /* ROW 5 */
+    KeyState.SPY,
+    KeyState.SPY,
+    KeyState.BYSTANDER,
+    KeyState.ASSASSIN,
+    KeyState.BYSTANDER,
+  ],
 };
 
 export const getKeys = (gameId: string) => {
