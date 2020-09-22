@@ -6,30 +6,53 @@ import { getKeys, KeyState } from "./util/keys";
 export default function KeyCard() {
   const [keys, setKeys] = useState<KeyState[]>([]);
   const [gameId, setGameId] = useState("");
+  const [isStarted, setIsStarted] = useState(false);
   const onSelectGameId = (e: any) => {
     e.preventDefault();
     const keys = getKeys(gameId);
     if (!keys) return;
     setKeys(keys);
+    setIsStarted(true);
+  };
+  const newGame = () => {
+    setIsStarted(false);
     setGameId("");
+    setKeys([]);
   };
   return (
     <StyledPage>
-      <form onSubmit={onSelectGameId}>
-        <input
-          type="text"
-          name="gameId"
-          placeholder="Game ID"
-          value={gameId}
-          onChange={(e) => setGameId(e.target.value)}
-        />
-        <input type="submit" value="Select" />
-      </form>
-      <div className="keys">
-        {keys.map((key) => (
-          <div className={"key " + key} />
-        ))}
-      </div>
+      {!isStarted && (
+        <>
+          <p>
+            <strong>GUIDE:</strong>Begge spillere indtaster det samme tal,
+            efterfulgt af et bogstav i rækkefølge. For eksempel kan den ene
+            skrive 101a, og den anden 101b.
+          </p>
+          <form onSubmit={onSelectGameId}>
+            <input
+              type="text"
+              name="gameId"
+              placeholder="Game ID"
+              value={gameId}
+              onChange={(e) => setGameId(e.target.value)}
+            />
+            <input type="submit" value="Start" />
+          </form>
+        </>
+      )}
+
+      {isStarted && (
+        <>
+          <button id="newGame" onClick={newGame}>
+            Nyt spil
+          </button>
+          <div className="keys">
+            {keys.map((key) => (
+              <div className={"key " + key} />
+            ))}
+          </div>
+        </>
+      )}
     </StyledPage>
   );
 }
@@ -40,10 +63,13 @@ const StyledPage = styled.div`
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  button#newGame {
+    margin-bottom: 20px;
+  }
   form {
     input {
-      height: 40px;
       margin-bottom: 20px;
+      height: 40px;
     }
   }
   .keys {
