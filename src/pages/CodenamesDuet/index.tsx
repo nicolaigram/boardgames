@@ -5,6 +5,7 @@ import { green_gradient, sand } from "./util/colors";
 
 export default function CodenamesDuet() {
   const [cards, setCards] = useState(createCards());
+  const [turn, setTurn] = useState(8);
 
   const toggleCardState = (index: number) => {
     const temp = [...cards];
@@ -14,6 +15,13 @@ export default function CodenamesDuet() {
 
   return (
     <StyledPage>
+      <div className="turn-counter">
+        <div className="buttons">
+          <button onClick={() => setTurn(turn + 1)}>↑</button>
+          <button onClick={() => setTurn(turn - 1)}>↓</button>
+        </div>
+        <span>Turns left: {turn}</span>
+      </div>
       <div className="board">
         {cards.map((card, index) => (
           <div
@@ -37,6 +45,34 @@ const StyledPage = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  .turn-counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotateZ(-90deg);
+    background: rgba(255, 255, 255, 0.3);
+    padding: 8px;
+    margin-right: 80px;
+    width: 250px;
+    span {
+      font-size: 40px;
+      text-align: center;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      button {
+        height: 80px;
+        width: 80px;
+        border-radius: 8px;
+        border: 0;
+        background: #111;
+        color: white;
+        font-size: 30px;
+      }
+    }
+  }
   .board {
     display: flex;
     flex-wrap: wrap;
