@@ -379,8 +379,9 @@ export const getKeys = (gameId: string) => {
       return;
     }
   });
-  let number = (Number(temp) % 3) + 1;
-  let newModifier = modifier.charCodeAt(0) % 2 === 0 ? "a" : "b";
+  const limit = Object.keys(keys).length / 2 + 1;
+  let number = Number(temp) < limit ? Number(temp) : (Number(temp) % limit) + 1;
+  let newModifier = modifier.charCodeAt(0) % 2 !== 0 ? "a" : "b";
   const newGameId = String(number) + newModifier;
   return keys[newGameId];
 };
