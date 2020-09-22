@@ -82,19 +82,20 @@ const StyledPage = styled.div`
   .keys {
     @media all and (orientation: landscape) {
       width: 90vh;
-      height: 90vh;
+      height: 60vh;
     }
     @media all and (orientation: portrait) {
       width: 90vw;
-      height: 90vw;
+      height: 60vw;
     }
 
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid black;
     .key {
       flex: 1 0 18%;
       border: 1px solid black;
+      margin: 0.5%;
+      border-radius: 8px;
       &.bystander {
         background: ${sand};
       }
