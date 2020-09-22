@@ -24,7 +24,7 @@ export default function KeyCard() {
       {!isStarted && (
         <>
           <p>
-            <strong>GUIDE:</strong>Begge spillere indtaster det samme tal,
+            <strong>GUIDE: </strong>Begge spillere indtaster det samme tal,
             efterfulgt af et bogstav i rækkefølge. For eksempel kan den ene
             skrive 101a, og den anden 101b.
           </p>
