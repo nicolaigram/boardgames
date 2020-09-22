@@ -48,6 +48,7 @@ const StyledPage = styled.div`
       align-items: center;
       flex: 1 0 16%;
       margin: 5px;
+      user-select: none;
       &.guessed {
         background: radial-gradient(#e0dd56, #048403, #004119);
       }
