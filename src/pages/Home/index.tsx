@@ -13,6 +13,9 @@ export default function Home() {
       <Link to={process.env.PUBLIC_URL + "/codenames-duet"}>
         Codenames Duet
       </Link>
+      <Link to={process.env.PUBLIC_URL + "/codenames-duet/keycard"}>
+        Codenames Duet - KeyCard
+      </Link>
     </StyledPage>
   );
 }
