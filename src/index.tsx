@@ -7,11 +7,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
+import CodenamesDuet from "./pages/CodenamesDuet";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path={process.env.PUBLIC_URL + "/codenames-duet"}>
+          <CodenamesDuet />
+        </Route>
         <Route path={process.env.PUBLIC_URL + "/munchkin"}>
           <Munchkin />
         </Route>

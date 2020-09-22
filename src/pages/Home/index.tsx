@@ -10,6 +10,9 @@ export default function Home() {
       </Link>
       <Link to={process.env.PUBLIC_URL + "/star-realms"}>Star Realms</Link>
       <Link to={process.env.PUBLIC_URL + "/munchkin"}>Munchkin</Link>
+      <Link to={process.env.PUBLIC_URL + "/codenames-duet"}>
+        Codenames Duet
+      </Link>
     </StyledPage>
   );
 }

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 interface Player {
   name: string;
+  editingName: boolean;
   level: number;
   strength: number;
   gender: string;
@@ -22,6 +23,7 @@ export default function Munchkin() {
 
   const createPlayer = (): Player => ({
     name: "",
+    editingName: true,
     level: 0,
     strength: 0,
     gender: "male",
@@ -44,7 +46,35 @@ export default function Munchkin() {
       <PlayersContainer>
         {players.map((player, index) => (
           <Player color={colors[index]}>
-            <p>{player.name || "Unnamed"}</p>
+            {!player.editingName ? (
+              <>
+                <div>
+                  <span>{player.name || "Unnamed"}</span>
+                </div>
+                <button
+                  onClick={() => changePlayerStat(index, "editingName", true)}
+                >
+                  Edit name
+                </button>
+              </>
+            ) : (
+              <>
+                <input
+                  value={player.name}
+                  placeholder="Enter name"
+                  className="player-name"
+                  onChange={(e) =>
+                    changePlayerStat(index, "name", e.target.value)
+                  }
+                />
+                <button
+                  onClick={() => changePlayerStat(index, "editingName", false)}
+                >
+                  Confirm
+                </button>
+              </>
+            )}
+
             <div className="player-img-container">
               <img
                 className="player-img"
@@ -100,10 +130,15 @@ export default function Munchkin() {
 }
 
 const Page = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@200;400&display=swap");
   display: flex;
   padding: 20px;
   min-height: 100vh;
   background-color: #ffe5cc;
+  * {
+    font-family: "Grenze Gotisch", cursive;
+    font-size: 22px;
+  }
 `;
 
 const PlayersContainer = styled.div``;
@@ -125,6 +160,9 @@ const Player: any = styled.div`
   }
   .player-img {
     height: 100px;
+  }
+  .player-name {
+    width: 100%;
   }
   .stats {
     margin-top: 10px;
