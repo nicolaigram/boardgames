@@ -5,17 +5,11 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <StyledPage>
-      <Link to={process.env.PUBLIC_URL + "/king-of-new-york"}>
-        King of New York
-      </Link>
-      <Link to={process.env.PUBLIC_URL + "/star-realms"}>Star Realms</Link>
-      <Link to={process.env.PUBLIC_URL + "/munchkin"}>Munchkin</Link>
-      <Link to={process.env.PUBLIC_URL + "/codenames-duet"}>
-        Codenames Duet
-      </Link>
-      <Link to={process.env.PUBLIC_URL + "/codenames-duet/keycard"}>
-        Codenames Duet - KeyCard
-      </Link>
+      <Link to={"/king-of-new-york"}>King of New York</Link>
+      <Link to={"/star-realms"}>Star Realms</Link>
+      <Link to={"/munchkin"}>Munchkin</Link>
+      <Link to={"/codenames-duet"}>Codenames Duet</Link>
+      <Link to={"/codenames-duet/keycard"}>Codenames Duet - KeyCard</Link>
     </StyledPage>
   );
 }

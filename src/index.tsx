@@ -12,24 +12,24 @@ import CodenamesDuetKeyCard from "./pages/CodenamesDuet/KeyCard";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route path={process.env.PUBLIC_URL + "/codenames-duet/keycard"}>
+        <Route path={"/codenames-duet/keycard"}>
           <CodenamesDuetKeyCard />
         </Route>
-        <Route path={process.env.PUBLIC_URL + "/codenames-duet"}>
+        <Route path={"/codenames-duet"}>
           <CodenamesDuet />
         </Route>
-        <Route path={process.env.PUBLIC_URL + "/munchkin"}>
+        <Route path={"/munchkin"}>
           <Munchkin />
         </Route>
-        <Route path={process.env.PUBLIC_URL + "/star-realms"}>
+        <Route path={"/star-realms"}>
           <StarRealms />
         </Route>
-        <Route path={process.env.PUBLIC_URL + "/king-of-new-york"}>
+        <Route path={"/king-of-new-york"}>
           <KingOfNewYork />
         </Route>
-        <Route path={process.env.PUBLIC_URL + "/"}>
+        <Route path={"/"}>
           <Home />
         </Route>
       </Switch>
