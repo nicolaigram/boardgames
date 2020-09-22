@@ -39,6 +39,15 @@ export default function Munchkin() {
     setPlayers(copy);
   };
 
+  const changeGender = (playerIndex: number) => {
+    const player = players[playerIndex];
+    changePlayerStat(
+      playerIndex,
+      "gender",
+      player.gender === "male" ? "female" : "male"
+    );
+  };
+
   const addPlayer = () => {
     setPlayers([...players, createPlayer()]);
   };
@@ -79,7 +88,10 @@ export default function Munchkin() {
               </>
             )}
 
-            <div className="player-img-container">
+            <div
+              className="player-img-container"
+              onClick={() => changeGender(index)}
+            >
               <img
                 className="player-img"
                 src={
