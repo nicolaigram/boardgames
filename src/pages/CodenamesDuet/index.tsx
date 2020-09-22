@@ -52,7 +52,7 @@ const StyledPage = styled.div`
     transform: rotateZ(-90deg);
     background: rgba(255, 255, 255, 0.3);
     padding: 8px;
-    margin-right: 80px;
+    margin-right: 40px;
     width: 250px;
     span {
       font-size: 40px;
