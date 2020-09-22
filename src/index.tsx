@@ -8,11 +8,15 @@ import Home from "./pages/Home";
 import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
 import CodenamesDuet from "./pages/CodenamesDuet";
+import CodenamesDuetKeyCard from "./pages/CodenamesDuet/KeyCard";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path={process.env.PUBLIC_URL + "/codenames-duet/keycard"}>
+          <CodenamesDuetKeyCard />
+        </Route>
         <Route path={process.env.PUBLIC_URL + "/codenames-duet"}>
           <CodenamesDuet />
         </Route>

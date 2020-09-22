@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
 import { Card, createCards, getNextCardState } from "./util/cards";
+import { green_gradient, sand } from "./util/colors";
 
 export default function CodenamesDuet() {
   const [cards, setCards] = useState(createCards());
@@ -45,7 +46,7 @@ const StyledPage = styled.div`
       font-size: 22px;
       font-weight: 400;
       position: relative;
-      background: linear-gradient(#ede1c7 50%, #fff 50%);
+      background: linear-gradient(${sand} 50%, #fff 50%);
       border: 1px solid black;
       border-radius: 8px;
       display: flex;
@@ -62,7 +63,7 @@ const StyledPage = styled.div`
         }
       }
       &.guessed {
-        background: radial-gradient(#e0dd56, #048403, #004119);
+        background: ${green_gradient};
       }
       &.north::before,
       &.south::before,
