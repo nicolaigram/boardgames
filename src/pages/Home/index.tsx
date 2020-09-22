@@ -20,16 +20,17 @@ const StyledPage = styled.div`
   flex-direction: column;
   padding-top: 100px;
   min-height: 100vh;
+  background-image: url(/boardgames/main-bg.gif);
+  background-position: center;
+  background-size: cover;
   a {
-    --link-color: rgb(255, 255, 255);
-    --link-color-hover: rgb(150, 150, 150);
-    --link-border-color: #333;
+    --link-color: rgba(255, 255, 255, 0.3);
+    --link-color-hover: rgba(255, 255, 255, 0.7);
     --link-text-color: black;
     padding: 12px;
     border-radius: 8px;
     font-size: 32px;
     background-color: var(--link-color);
-    border: 1px solid var(--link-border-color);
     color: var(--link-text-color);
     text-decoration: none;
     margin-bottom: 16px;
