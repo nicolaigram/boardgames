@@ -32,6 +32,7 @@ export enum CardState {
   guessedSouth = "guessed south",
   bystanderNorth = "bystander north",
   bystanderSouth = "bystander south",
+  bystanderBoth = "bystander both",
 }
 
 export interface Card {
@@ -61,6 +62,9 @@ export const getNextCardState = (currentState: CardState) => {
       return CardState.bystanderSouth;
 
     case CardState.bystanderSouth:
+      return CardState.bystanderBoth;
+
+    case CardState.bystanderBoth:
       return CardState.default;
 
     default:

@@ -19,7 +19,8 @@ export default function CodenamesDuet() {
             className={"word " + card.state}
             onClick={() => toggleCardState(index)}
           >
-            <span>{card.word}</span>
+            <span className="player-north">{card.word}</span>
+            <span className="player-south">{card.word}</span>
           </div>
         ))}
       </div>
@@ -35,32 +36,46 @@ const StyledPage = styled.div`
   .board {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
+    width: 800px;
     height: 600px;
     .word {
-      font-size: 20px;
+      font-size: 22px;
+      font-weight: 400;
       position: relative;
-      background-color: #ede1c7;
+      background: linear-gradient(#ede1c7 50%, #fff 50%);
       border: 1px solid black;
       border-radius: 8px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-around;
       align-items: center;
       flex: 1 0 16%;
       margin: 5px;
       user-select: none;
+      span {
+        &.player-north {
+          transform: rotateZ(180deg);
+          font-style: italic;
+        }
+      }
       &.guessed {
         background: radial-gradient(#e0dd56, #048403, #004119);
       }
-      &.north::before {
+      &.north::before,
+      &.south::before,
+      &.both::before {
         position: absolute;
-        top: 10%;
+        font-size: 28px;
+        font-weight: 500;
+      }
+      &.north::before {
         content: "↑";
       }
       &.south::before {
-        position: absolute;
-        bottom: 10%;
         content: "↓";
+      }
+      &.both::before {
+        content: "↑↓";
       }
     }
   }
