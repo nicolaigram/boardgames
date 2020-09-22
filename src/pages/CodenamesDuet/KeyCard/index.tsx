@@ -11,6 +11,7 @@ export default function KeyCard() {
     const keys = getKeys(gameId);
     if (!keys) return;
     setKeys(keys);
+    setGameId("");
   };
   return (
     <StyledPage>
