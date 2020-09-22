@@ -29,6 +29,9 @@ export default function CodenamesDuet() {
 }
 
 const StyledPage = styled.div`
+  background: url("/boardgames/codenames-duet/wooden-table-bg.jpg");
+  background-position: center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
