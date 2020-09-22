@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/boardgames/static/css/main.78369ade.chunk.css",
-    "main.js": "/boardgames/static/js/main.985cf65a.chunk.js",
-    "main.js.map": "/boardgames/static/js/main.985cf65a.chunk.js.map",
+    "main.js": "/boardgames/static/js/main.6a518c82.chunk.js",
+    "main.js.map": "/boardgames/static/js/main.6a518c82.chunk.js.map",
     "runtime-main.js": "/boardgames/static/js/runtime-main.e4470165.js",
     "runtime-main.js.map": "/boardgames/static/js/runtime-main.e4470165.js.map",
     "static/js/2.043788e0.chunk.js": "/boardgames/static/js/2.043788e0.chunk.js",
     "static/js/2.043788e0.chunk.js.map": "/boardgames/static/js/2.043788e0.chunk.js.map",
     "index.html": "/boardgames/index.html",
-    "precache-manifest.fe93f74caae51b4121d53d0aa7d80680.js": "/boardgames/precache-manifest.fe93f74caae51b4121d53d0aa7d80680.js",
+    "precache-manifest.896c29f25c7acf24f9bf836e77662f4a.js": "/boardgames/precache-manifest.896c29f25c7acf24f9bf836e77662f4a.js",
     "service-worker.js": "/boardgames/service-worker.js",
     "static/css/main.78369ade.chunk.css.map": "/boardgames/static/css/main.78369ade.chunk.css.map",
     "static/js/2.043788e0.chunk.js.LICENSE.txt": "/boardgames/static/js/2.043788e0.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e4470165.js",
     "static/js/2.043788e0.chunk.js",
     "static/css/main.78369ade.chunk.css",
-    "static/js/main.985cf65a.chunk.js"
+    "static/js/main.6a518c82.chunk.js"
   ]
 }
