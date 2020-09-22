@@ -63,6 +63,7 @@ const StyledPage = styled.div`
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  padding: 20px;
   button#newGame {
     margin-bottom: 20px;
   }
