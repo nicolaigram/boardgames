@@ -22,7 +22,7 @@ export default function KeyCard() {
   return (
     <StyledPage>
       {!isStarted && (
-        <>
+        <div className="is-not-started">
           <p>
             <strong>GUIDE: </strong>Begge spillere indtaster det samme tal,
             efterfulgt af et bogstav i rækkefølge. For eksempel kan den ene
@@ -38,11 +38,11 @@ export default function KeyCard() {
             />
             <input type="submit" value="Start" />
           </form>
-        </>
+        </div>
       )}
 
       {isStarted && (
-        <>
+        <div className="is-started">
           <button id="newGame" onClick={newGame}>
             Nyt spil
           </button>
@@ -51,7 +51,7 @@ export default function KeyCard() {
               <div className={"key " + key} />
             ))}
           </div>
-        </>
+        </div>
       )}
     </StyledPage>
   );
@@ -64,6 +64,12 @@ const StyledPage = styled.div`
   flex-direction: column;
   min-height: 100vh;
   padding: 20px;
+  background: url(${process.env.PUBLIC_URL}/codenames-duet/wooden-table-bg.jpg);
+  .is-not-started {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+  }
   button#newGame {
     margin-bottom: 20px;
   }
