@@ -80,7 +80,7 @@ const keys: any = {
   "2a": [
     /* ROW 1 */
     KeyState.BYSTANDER,
-    KeyState.SPY,
+    KeyState.ASSASSIN,
     KeyState.BYSTANDER,
     KeyState.BYSTANDER,
     KeyState.SPY,
