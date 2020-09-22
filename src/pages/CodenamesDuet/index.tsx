@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
-import { Card, createCards, getNextCardState } from "./util/cards";
+import { Card, CardState, createCards, getNextCardState } from "./util/cards";
 import { green_gradient, sand } from "./util/colors";
 
 export default function CodenamesDuet() {
@@ -11,6 +11,12 @@ export default function CodenamesDuet() {
     const temp = [...cards];
     temp[index].state = getNextCardState(temp[index].state);
     setCards(temp);
+  };
+
+  const isGuessed = (card: Card) => {
+    if (card.state === CardState.guessedNorth) return true;
+    if (card.state === CardState.guessedSouth) return true;
+    return false;
   };
 
   return (
@@ -28,8 +34,12 @@ export default function CodenamesDuet() {
             className={"word " + card.state}
             onClick={() => toggleCardState(index)}
           >
-            <span className="player-north">{card.word}</span>
-            <span className="player-south">{card.word}</span>
+            {!isGuessed(card) && (
+              <>
+                <span className="player-north">{card.word}</span>
+                <span className="player-south">{card.word}</span>
+              </>
+            )}
           </div>
         ))}
       </div>
