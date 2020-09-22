@@ -39,6 +39,10 @@ export default function Munchkin() {
     setPlayers(copy);
   };
 
+  const addPlayer = () => {
+    setPlayers([...players, createPlayer()]);
+  };
+
   const [players, setPlayers] = useState<Player[]>([createPlayer()]);
 
   return (
@@ -124,6 +128,7 @@ export default function Munchkin() {
             </div>
           </Player>
         ))}
+        <button onClick={addPlayer}>Add player</button>
       </PlayersContainer>
     </Page>
   );
@@ -131,7 +136,6 @@ export default function Munchkin() {
 
 const Page = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@200;400&display=swap");
-  display: flex;
   padding: 20px;
   min-height: 100vh;
   background-color: #ffe5cc;
@@ -141,7 +145,10 @@ const Page = styled.div`
   }
 `;
 
-const PlayersContainer = styled.div``;
+const PlayersContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 const Player: any = styled.div`
   padding: 20px;
@@ -149,6 +156,7 @@ const Player: any = styled.div`
   border-radius: 6px;
   box-shadow: 0px 3px 3px #ccc;
   margin-right: 20px;
+  margin-bottom: 20px;
   width: 200px;
   background-color: #fff2e6;
   .player-img-container {
