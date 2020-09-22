@@ -5,7 +5,7 @@ import { green_gradient, sand } from "./util/colors";
 
 export default function CodenamesDuet() {
   const [cards, setCards] = useState(createCards());
-  const [turn, setTurn] = useState(8);
+  const [turn, setTurn] = useState(9);
 
   const toggleCardState = (index: number) => {
     const temp = [...cards];
