@@ -1,40 +1,25 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
+import { Card, createCards, getNextCardState } from "./util/cards";
 
-export default function index() {
-  const words = [
-    "Wizard",
-    "Noah",
-    "Sign",
-    "Hamburger",
-    "Parrot",
-    "Bicycle",
-    "Tornado",
-    "Virus",
-    "Map",
-    "Battle",
-    "Battleship",
-    "Snake",
-    "Sticker",
-    "Valentine",
-    "Cloud",
-    "Steam",
-    "Beard",
-    "Bunk",
-    "Second",
-    "Chain",
-    "Werewolf",
-    "Roll",
-    "Powder",
-    "Glacier",
-    "Musketeer",
-  ];
+export default function CodenamesDuet() {
+  const [cards, setCards] = useState(createCards());
+
+  const toggleCardState = (index: number) => {
+    const temp = [...cards];
+    temp[index].state = getNextCardState(temp[index].state);
+    setCards(temp);
+  };
+
   return (
     <StyledPage>
       <div className="board">
-        {words.map((word) => (
-          <div className="word">
-            <span>{word}</span>
+        {cards.map((card, index) => (
+          <div
+            className={"word " + card.state}
+            onClick={() => toggleCardState(index)}
+          >
+            <span>{card.word}</span>
           </div>
         ))}
       </div>
@@ -53,6 +38,9 @@ const StyledPage = styled.div`
     width: 600px;
     height: 600px;
     .word {
+      font-size: 20px;
+      position: relative;
+      background-color: #ede1c7;
       border: 1px solid black;
       border-radius: 8px;
       display: flex;
@@ -60,6 +48,19 @@ const StyledPage = styled.div`
       align-items: center;
       flex: 1 0 16%;
       margin: 5px;
+      &.guessed {
+        background: radial-gradient(#e0dd56, #048403, #004119);
+      }
+      &.north::before {
+        position: absolute;
+        top: 10%;
+        content: "↑";
+      }
+      &.south::before {
+        position: absolute;
+        bottom: 10%;
+        content: "↓";
+      }
     }
   }
 `;
