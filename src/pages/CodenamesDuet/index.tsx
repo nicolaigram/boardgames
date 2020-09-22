@@ -102,6 +102,7 @@ const StyledPage = styled.div`
       flex: 1 0 16%;
       margin: 5px;
       user-select: none;
+      overflow: hidden;
       span {
         &.player-north {
           transform: rotateZ(180deg);
