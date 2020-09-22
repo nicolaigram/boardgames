@@ -18,7 +18,7 @@ const StyledPage = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 100px;
+  padding: 100px 20px 0;
   min-height: 100vh;
   background-image: url(/boardgames/main-bg.gif);
   background-position: center;
@@ -34,6 +34,7 @@ const StyledPage = styled.div`
     color: var(--link-text-color);
     text-decoration: none;
     margin-bottom: 16px;
+    text-align: center;
     &:hover {
       background-color: var(--link-color-hover);
     }
