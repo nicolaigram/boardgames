@@ -45,6 +45,7 @@ const StyledPage = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
   .turn-counter {
     display: flex;
     flex-direction: column;
@@ -52,7 +53,6 @@ const StyledPage = styled.div`
     transform: rotateZ(-90deg);
     background: rgba(255, 255, 255, 0.3);
     padding: 8px;
-    margin-right: 40px;
     width: 250px;
     span {
       font-size: 40px;
