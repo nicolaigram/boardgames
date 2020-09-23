@@ -410,6 +410,7 @@ export const validateKeys = () => {
     if (spies === 9 && assasins === 3 && bystanders === 13) {
       // Everything OK!
     } else {
+      alert(`Error in game ${key}. Check console output.`);
       console.log(`Game ${key} is invalid`);
       console.log(`Spies: ${spies}`);
       console.log(`Bystanders: ${bystanders}`);
