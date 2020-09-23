@@ -35,6 +35,8 @@ const StyledPage = styled.div`
     text-decoration: none;
     margin-bottom: 16px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
     &:hover {
       background-color: var(--link-color-hover);
     }

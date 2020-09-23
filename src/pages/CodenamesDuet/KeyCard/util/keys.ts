@@ -385,3 +385,35 @@ export const getKeys = (gameId: string) => {
   const newGameId = String(number) + newModifier;
   return keys[newGameId];
 };
+
+export const validateKeys = () => {
+  Object.keys(keys).forEach((key) => {
+    const game = keys[key];
+    let spies = 0;
+    let bystanders = 0;
+    let assasins = 0;
+    game.forEach((cell: any) => {
+      switch (cell) {
+        case KeyState.SPY:
+          spies++;
+          break;
+        case KeyState.BYSTANDER:
+          bystanders++;
+          break;
+        case KeyState.ASSASSIN:
+          assasins++;
+          break;
+        default:
+          break;
+      }
+    });
+    if (spies === 9 && assasins === 3 && bystanders === 13) {
+      // Everything OK!
+    } else {
+      console.log(`Game ${key} is invalid`);
+      console.log(`Spies: ${spies}`);
+      console.log(`Bystanders: ${bystanders}`);
+      console.log(`Assasins: ${assasins}\n`);
+    }
+  });
+};

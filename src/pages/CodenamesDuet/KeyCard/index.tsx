@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { green_gradient, green_light, sand } from "../util/colors";
-import { getKeys, KeyState } from "./util/keys";
+import { getKeys, KeyState, validateKeys } from "./util/keys";
 
 export default function KeyCard() {
   const [keys, setKeys] = useState<KeyState[]>([]);
   const [gameId, setGameId] = useState("");
   const [isStarted, setIsStarted] = useState(false);
+  useEffect(() => {
+    validateKeys();
+  }, []);
   const onSelectGameId = (e: any) => {
     e.preventDefault();
     const keys = getKeys(gameId);
