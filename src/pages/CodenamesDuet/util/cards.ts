@@ -461,7 +461,7 @@ const words = [
   },
   {
     en: "Crab",
-    da: "Crab",
+    da: "Krabbe",
   },
   {
     en: "Troll",
