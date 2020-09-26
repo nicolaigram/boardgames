@@ -8,8 +8,14 @@ export default function Home() {
       <Link to={"/king-of-new-york"}>King of New York</Link>
       <Link to={"/star-realms"}>Star Realms</Link>
       <Link to={"/munchkin"}>Munchkin</Link>
-      <Link to={"/codenames-duet/da/standard"}>Codenames Duet - Danish</Link>
-      <Link to={"/codenames-duet/en/standard"}>Codenames Duet - English</Link>
+      <Link to={"/codenames-duet/da/standard"}>
+        Codenames Duet - Standard/Danish
+      </Link>
+      <Link to={"/codenames-duet/en/standard"}>
+        Codenames Duet - Standard/English
+      </Link>
+      <Link to={"/codenames-duet/en/deep"}>Codenames Duet - Deep/English</Link>
+      <Link to={"/codenames-duet/da/deep"}>Codenames Duet - Deep/Danish</Link>
       <Link to={"/codenames-duet/keycard"}>Codenames Duet - KeyCard</Link>
     </StyledPage>
   );
