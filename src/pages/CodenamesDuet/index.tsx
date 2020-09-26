@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Card, CardState, createCards, getNextCardState } from "./util/cards";
 import { green_gradient, sand } from "./util/colors";
 
 export default function CodenamesDuet() {
-  const [cards, setCards] = useState(createCards());
+  const { language, version } = useParams<any>();
+
+  const [cards, setCards] = useState(createCards(language, version));
   const [turn, setTurn] = useState(9);
 
   const toggleCardState = (index: number) => {

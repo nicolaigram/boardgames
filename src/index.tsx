@@ -17,7 +17,7 @@ ReactDOM.render(
         <Route path={"/codenames-duet/keycard"}>
           <CodenamesDuetKeyCard />
         </Route>
-        <Route path={"/codenames-duet"}>
+        <Route path={"/codenames-duet/:language/:version"}>
           <CodenamesDuet />
         </Route>
         <Route path={"/munchkin"}>

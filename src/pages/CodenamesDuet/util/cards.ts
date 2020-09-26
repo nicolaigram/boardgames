@@ -822,8 +822,7 @@ function shuffle(a: any[]) {
   return a;
 }
 
-export const createCards = (): Card[] => {
-  const language = "da";
+export const createCards = (language: string, version: string): Card[] => {
   const shuffledWords = shuffle([...words]);
   const cards = new Array(25).fill({}).map((card, index) => ({
     word: shuffledWords[index][language],
