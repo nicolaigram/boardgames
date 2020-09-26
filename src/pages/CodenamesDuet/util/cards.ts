@@ -799,8 +799,7 @@ const words = [
 
 export enum CardState {
   default = "default",
-  guessedNorth = "guessed north",
-  guessedSouth = "guessed south",
+  guessed = "guessed",
   bystanderNorth = "bystander north",
   bystanderSouth = "bystander south",
   bystanderBoth = "bystander both",
@@ -834,12 +833,9 @@ export const createCards = (language: string, version: string): Card[] => {
 export const getNextCardState = (currentState: CardState) => {
   switch (currentState) {
     case CardState.default:
-      return CardState.guessedNorth;
+      return CardState.guessed;
 
-    case CardState.guessedNorth:
-      return CardState.guessedSouth;
-
-    case CardState.guessedSouth:
+    case CardState.guessed:
       return CardState.bystanderNorth;
 
     case CardState.bystanderNorth:

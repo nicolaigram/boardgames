@@ -17,8 +17,8 @@ export default function CodenamesDuet() {
   };
 
   const isGuessed = (card: Card) => {
-    if (card.state === CardState.guessedNorth) return true;
-    if (card.state === CardState.guessedSouth) return true;
+    if (card.state === CardState.guessed) return true;
+    // if (card.state === CardState.guessedSouth) return true;
     return false;
   };
 
