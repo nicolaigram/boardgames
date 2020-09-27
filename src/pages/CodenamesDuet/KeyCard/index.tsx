@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { green_gradient, green_light, sand } from "../util/colors";
+import { blue, green_gradient, green_light, red, sand } from "../util/colors";
 import { getKeys, KeyState, validateKeys } from "./util/keys";
 
 export default function KeyCard() {
@@ -109,6 +109,12 @@ const StyledPage = styled.div`
       }
       &.spy {
         background: ${green_gradient};
+      }
+      &.red {
+        background: ${red};
+      }
+      &.blue {
+        background: ${blue};
       }
     }
   }

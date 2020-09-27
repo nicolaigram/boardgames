@@ -18,9 +18,7 @@ export default function index() {
       <div className="col">
         <h2>Tools</h2>
         <Link to={"/codenames-duet/keycard/duet"}>KeyCard (Duet)</Link>
-        <Link style={{ background: "grey" }} to={"#"}>
-          KeyCard (Standard) *Coming Soon*
-        </Link>
+        <Link to={"/codenames-duet/keycard/standard"}>KeyCard (Standard)</Link>
       </div>
     </StyledPage>
   );

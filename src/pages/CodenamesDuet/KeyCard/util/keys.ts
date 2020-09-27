@@ -1,7 +1,12 @@
+import KeyCard from "..";
+import { blue } from "../../util/colors";
+
 export enum KeyState {
   BYSTANDER = "bystander",
   ASSASSIN = "assasin",
   SPY = "spy",
+  RED = "red",
+  BLUE = "blue",
 }
 
 const data: any = {
@@ -369,7 +374,37 @@ const data: any = {
   },
 };
 
+function shuffle(a: any[]) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
+}
+
+const createRandomStandardKeys = () => {
+  const [redCount, blueCount] = shuffle([8, 9]);
+  const bystanderCount = 25 - 8 - 9 - 1; // 7
+  const assasinCount = 1;
+  if (redCount > blueCount) {
+    alert("Red goes first");
+  } else {
+    alert("Blue goes first");
+  }
+  const keys = [
+    ...Array(redCount).fill(KeyState.RED),
+    ...Array(blueCount).fill(KeyState.BLUE),
+    ...Array(bystanderCount).fill(KeyState.BYSTANDER),
+    ...Array(assasinCount).fill(KeyState.ASSASSIN),
+  ];
+  return shuffle(keys);
+};
+
 export const getKeys = (gameId: string, version: string) => {
+  if (version === "standard") return createRandomStandardKeys();
   const keys = data[version];
   const chars = Array.from(gameId);
   let temp = "";
