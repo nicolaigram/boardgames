@@ -13,7 +13,7 @@ export default function CodenamesRouter() {
       <Route path={"/codenames-duet/game/:language/:version"}>
         <CodenamesDuet />
       </Route>
-      <Route path={"/codenames-duet"}>
+      <Route exact path={"/codenames-duet"}>
         <Home />
       </Route>
     </>
