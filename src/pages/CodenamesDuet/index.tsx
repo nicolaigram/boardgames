@@ -7,17 +7,20 @@ export default function index() {
     <StyledPage>
       <div className="col">
         <h2>Danish</h2>
-        <Link to={"/codenames-duet/da/standard"}>Standard</Link>
-        <Link to={"/codenames-duet/da/deep"}>Deep Undercover</Link>
+        <Link to={"/codenames-duet/game/da/standard"}>Standard</Link>
+        <Link to={"/codenames-duet/game/da/deep"}>Deep Undercover</Link>
       </div>
       <div className="col">
         <h2>English</h2>
-        <Link to={"/codenames-duet/en/standard"}>Standard</Link>
-        <Link to={"/codenames-duet/en/deep"}>Deep Undercover</Link>
+        <Link to={"/codenames-duet/game/en/standard"}>Standard</Link>
+        <Link to={"/codenames-duet/game/en/deep"}>Deep Undercover</Link>
       </div>
       <div className="col">
         <h2>Tools</h2>
-        <Link to={"/codenames-duet/keycard"}>KeyCard</Link>
+        <Link to={"/codenames-duet/keycard/duet"}>KeyCard (Duet)</Link>
+        <Link style={{ background: "grey" }} to={"#"}>
+          KeyCard (Standard) *Coming Soon*
+        </Link>
       </div>
     </StyledPage>
   );

@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { green_gradient, green_light, sand } from "../util/colors";
 import { getKeys, KeyState, validateKeys } from "./util/keys";
 
 export default function KeyCard() {
+  const { version } = useParams<any>();
   const [keys, setKeys] = useState<KeyState[]>([]);
   const [gameId, setGameId] = useState("");
   const [isStarted, setIsStarted] = useState(false);
@@ -12,7 +14,7 @@ export default function KeyCard() {
   }, []);
   const onSelectGameId = (e: any) => {
     e.preventDefault();
-    const keys = getKeys(gameId);
+    const keys = getKeys(gameId, version);
     if (!keys) return;
     setKeys(keys);
     setIsStarted(true);

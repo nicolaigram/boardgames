@@ -7,10 +7,10 @@ import Home from "./";
 export default function CodenamesRouter() {
   return (
     <>
-      <Route path={"/codenames-duet/keycard"}>
+      <Route path={"/codenames-duet/keycard/:version"}>
         <KeyCard />
       </Route>
-      <Route path={"/codenames-duet/:language/:version"}>
+      <Route path={"/codenames-duet/game/:language/:version"}>
         <CodenamesDuet />
       </Route>
       <Route path={"/codenames-duet"}>
