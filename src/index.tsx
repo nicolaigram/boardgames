@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
-import CodenamesRouter from "./pages/CodenamesDuet/router";
+import CodenamesRouter from "./pages/Codenames/router";
 
 ReactDOM.render(
   <React.StrictMode>

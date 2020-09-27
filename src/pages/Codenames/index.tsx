@@ -7,18 +7,22 @@ export default function index() {
     <StyledPage>
       <div className="col">
         <h2>Danish</h2>
-        <Link to={"/codenames-duet/game/da/standard"}>Standard</Link>
-        <Link to={"/codenames-duet/game/da/deep"}>Deep Undercover</Link>
+        <Link to={"/codenames/game/standard/da/default"}>Standard</Link>
+        <Link to={"/codenames/game/duet/da/default"}>Standard (Duet)</Link>
+        <Link to={"/codenames/game/standard/da/deep"}>Deep Undercover</Link>
+        <Link to={"/codenames/game/duet/da/deep"}>Deep Undercover (Duet)</Link>
       </div>
       <div className="col">
         <h2>English</h2>
-        <Link to={"/codenames-duet/game/en/standard"}>Standard</Link>
-        <Link to={"/codenames-duet/game/en/deep"}>Deep Undercover</Link>
+        <Link to={"/codenames/game/standard/en/default"}>Standard</Link>
+        <Link to={"/codenames/game/duet/en/default"}>Standard (Duet)</Link>
+        <Link to={"/codenames/game/standard/en/deep"}>Deep Undercover</Link>
+        <Link to={"/codenames/game/duet/en/deep"}>Deep Undercover (Duet)</Link>
       </div>
       <div className="col">
         <h2>Tools</h2>
-        <Link to={"/codenames-duet/keycard/duet"}>KeyCard (Duet)</Link>
-        <Link to={"/codenames-duet/keycard/standard"}>KeyCard (Standard)</Link>
+        <Link to={"/codenames/keycard/duet"}>KeyCard (Duet)</Link>
+        <Link to={"/codenames/keycard/standard"}>KeyCard (Standard)</Link>
       </div>
     </StyledPage>
   );

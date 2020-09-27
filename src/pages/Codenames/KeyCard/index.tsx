@@ -12,7 +12,7 @@ export default function KeyCard() {
   useEffect(() => {
     validateKeys();
   }, []);
-  const onSelectGameId = (e: any) => {
+  const handleStartGame = (e: any) => {
     e.preventDefault();
     const keys = getKeys(gameId, version);
     if (!keys) return;
@@ -28,21 +28,30 @@ export default function KeyCard() {
     <StyledPage>
       {!isStarted && (
         <div className="is-not-started">
-          <p>
-            <strong>GUIDE: </strong>Begge spillere indtaster det samme tal,
-            efterfulgt af et bogstav i rækkefølge. For eksempel kan den ene
-            skrive 101a, og den anden 101b.
-          </p>
-          <form onSubmit={onSelectGameId}>
-            <input
-              type="text"
-              name="gameId"
-              placeholder="Game ID"
-              value={gameId}
-              onChange={(e) => setGameId(e.target.value)}
-            />
-            <input type="submit" value="Start" />
-          </form>
+          {version === "duet" && (
+            <>
+              <p>
+                <strong>GUIDE: </strong>Begge spillere indtaster det samme tal,
+                efterfulgt af et bogstav i rækkefølge. For eksempel kan den ene
+                skrive 101a, og den anden 101b.
+              </p>
+              <form onSubmit={handleStartGame}>
+                <input
+                  type="text"
+                  name="gameId"
+                  placeholder="Game ID"
+                  value={gameId}
+                  onChange={(e) => setGameId(e.target.value)}
+                />
+                <input type="submit" value="Start" />
+              </form>
+            </>
+          )}
+          {version === "standard" && (
+            <form onSubmit={handleStartGame}>
+              <input type="submit" value="Start" />
+            </form>
+          )}
         </div>
       )}
 

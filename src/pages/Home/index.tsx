@@ -8,7 +8,7 @@ export default function Home() {
       <Link to={"/king-of-new-york"}>King of New York</Link>
       <Link to={"/star-realms"}>Star Realms</Link>
       <Link to={"/munchkin"}>Munchkin</Link>
-      <Link to={"/codenames-duet"}>Codenames Duet</Link>
+      <Link to={"/codenames"}>Codenames</Link>
     </StyledPage>
   );
 }

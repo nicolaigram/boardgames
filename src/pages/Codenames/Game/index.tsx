@@ -2,35 +2,41 @@ import styled from "@emotion/styled";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardState, createCards, getNextCardState } from "../util/cards";
-import { green_gradient, sand } from "../util/colors";
+import { blue, green_gradient, red, sand } from "../util/colors";
 
-export default function CodenamesDuet() {
-  const { language, version } = useParams<any>();
+export default function Codenames() {
+  const { language, version, cardset } = useParams<{
+    language: string;
+    version: "standard" | "duet";
+    cardset: string;
+  }>();
 
-  const [cards, setCards] = useState(createCards(language, version));
+  const [cards, setCards] = useState(createCards(language, cardset));
   const [turn, setTurn] = useState(9);
 
   const toggleCardState = (index: number) => {
     const temp = [...cards];
-    temp[index].state = getNextCardState(temp[index].state);
+    temp[index].state = getNextCardState[version](temp[index].state);
     setCards(temp);
   };
 
   const isGuessed = (card: Card) => {
-    if (card.state === CardState.guessed) return true;
+    if (card.state === CardState.guessedGreen) return true;
     // if (card.state === CardState.guessedSouth) return true;
     return false;
   };
 
   return (
     <StyledPage>
-      <div className="turn-counter">
-        <div className="buttons">
-          <button onClick={() => setTurn(turn + 1)}>↑</button>
-          <button onClick={() => setTurn(turn - 1)}>↓</button>
+      {version === "duet" && (
+        <div className="turn-counter">
+          <div className="buttons">
+            <button onClick={() => setTurn(turn + 1)}>↑</button>
+            <button onClick={() => setTurn(turn - 1)}>↓</button>
+          </div>
+          <span>Turns left: {turn}</span>
         </div>
-        <span>Turns left: {turn}</span>
-      </div>
+      )}
       <div className="board">
         {cards.map((card, index) => (
           <div
@@ -113,7 +119,21 @@ const StyledPage = styled.div`
         }
       }
       &.guessed {
-        background: ${green_gradient};
+        span {
+          display: none;
+        }
+        &.green {
+          background: ${green_gradient};
+        }
+        &.red {
+          background: ${red};
+        }
+        &.blue {
+          background: ${blue};
+        }
+        &.bystander {
+          background: ${sand};
+        }
       }
       &.north::before,
       &.south::before,
