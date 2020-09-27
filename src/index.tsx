@@ -7,32 +7,24 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
-import CodenamesDuet from "./pages/CodenamesDuet";
-import CodenamesDuetKeyCard from "./pages/CodenamesDuet/KeyCard";
+import CodenamesRouter from "./pages/CodenamesDuet/router";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router basename={process.env.PUBLIC_URL}>
-      <Switch>
-        <Route path={"/codenames-duet/keycard"}>
-          <CodenamesDuetKeyCard />
-        </Route>
-        <Route path={"/codenames-duet/:language/:version"}>
-          <CodenamesDuet />
-        </Route>
-        <Route path={"/munchkin"}>
-          <Munchkin />
-        </Route>
-        <Route path={"/star-realms"}>
-          <StarRealms />
-        </Route>
-        <Route path={"/king-of-new-york"}>
-          <KingOfNewYork />
-        </Route>
-        <Route path={"/"}>
-          <Home />
-        </Route>
-      </Switch>
+      <CodenamesRouter />
+      <Route path={"/munchkin"}>
+        <Munchkin />
+      </Route>
+      <Route path={"/star-realms"}>
+        <StarRealms />
+      </Route>
+      <Route path={"/king-of-new-york"}>
+        <KingOfNewYork />
+      </Route>
+      <Route exact path={"/"}>
+        <Home />
+      </Route>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
