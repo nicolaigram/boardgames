@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "65b4cdabb7c2cda0b388cba577e70929",
+    "revision": "6355fae1d8cab7ed4526b1eac0444ded",
     "url": "/boardgames/index.html"
   },
   {
-    "revision": "461aba4b3403d7fa0f3f",
+    "revision": "3fae5f8f3415651dcbe1",
     "url": "/boardgames/static/css/main.78369ade.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/boardgames/static/js/2.e3c5f35b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "461aba4b3403d7fa0f3f",
-    "url": "/boardgames/static/js/main.cc0b13c6.chunk.js"
+    "revision": "3fae5f8f3415651dcbe1",
+    "url": "/boardgames/static/js/main.2c299ace.chunk.js"
   },
   {
     "revision": "21870fb52d6d40d84448",
