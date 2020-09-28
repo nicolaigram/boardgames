@@ -88,7 +88,10 @@ const createRandomDuetKeys = () => {
     }
   }
 
-  return [a, b];
+  return [
+    a,
+    b.reverse(), // Player b sits on the opposite side of the table
+  ];
 };
 
 const createRandomStandardKeys = () => {
