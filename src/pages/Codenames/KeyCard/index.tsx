@@ -40,7 +40,7 @@ export default function KeyCard() {
           className="url-share"
           style={{ width: "100%", wordBreak: "break-all" }}
         >
-          {urlForFriend}
+          <span>{urlForFriend}</span>
           <button onClick={handleCopy}>Copy</button>
         </div>
       )}
@@ -68,8 +68,23 @@ const StyledPage = styled.div`
   padding: 20px;
   background: url(${process.env.PUBLIC_URL}/codenames/wooden-table-bg.jpg);
 
-  .url-share {
+  button {
     background: white;
+    border: 0;
+    border: 1px solid black;
+    padding: 12px;
+  }
+
+  .url-share {
+    margin-bottom: 20px;
+    span {
+      display: block;
+      background: white;
+    }
+    button {
+      height: 50px;
+      width: 100%;
+    }
   }
 
   button#newGame {

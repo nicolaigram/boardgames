@@ -114,8 +114,7 @@ export const getKeys = (gameId: string, version: string): any => {
     return [createRandomStandardKeys(), ""];
   } else if (version === "duet") {
     const [a, b] = createRandomDuetKeys();
-    let url = process.env.PUBLIC_URL;
-    url += "/codenames/" + version;
+    let url = window.location.href + "/";
     url += btoa(JSON.stringify(b));
     return [a, url];
   } else {

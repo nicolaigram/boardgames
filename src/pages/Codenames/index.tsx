@@ -11,7 +11,6 @@ export default function Codenames() {
     <StyledPage>
       <div className="col options">
         <h2>Language</h2>
-
         <div
           className={"option" + (language === "da" ? " active" : "")}
           onClick={() => setLanguage("da")}
