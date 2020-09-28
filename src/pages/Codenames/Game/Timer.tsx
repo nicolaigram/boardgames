@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useRef, useState } from "react";
 export default function Timer() {
-  const height = 600;
   const startTime = 60;
   const [timeLeft, setTimeLeft] = useState(startTime);
   const [isActive, setIsActive] = useState(false);
@@ -33,7 +32,6 @@ export default function Timer() {
   return (
     <TimerStyled
       onClick={toggleTimer}
-      height={height}
       percentage={(timeLeft / startTime) * 100}
     >
       <div className="timeLeft">{timeLeft}</div>
@@ -47,7 +45,7 @@ const TimerStyled: any = styled.div`
   align-items: center;
   position: relative;
   width: 100px;
-  height: ${(props: any) => props.height + "px"};
+  height: 100%;
   border: 1px solid black;
   background: rgba(0, 0, 0, 0.3);
   margin-right: 20px;

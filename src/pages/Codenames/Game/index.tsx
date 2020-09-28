@@ -29,30 +29,32 @@ export default function Codenames() {
 
   return (
     <StyledPage>
-      {version === "standard" && <Timer />}
-      {version === "duet" && (
-        <div className="turn-counter">
-          <div className="buttons">
-            <button onClick={() => setTurn(turn + 1)}>↑</button>
-            <button onClick={() => setTurn(turn - 1)}>↓</button>
+      <div className="container">
+        {version === "standard" && <Timer />}
+        {version === "duet" && (
+          <div className="turn-counter">
+            <div className="buttons">
+              <button onClick={() => setTurn(turn + 1)}>↑</button>
+              <button onClick={() => setTurn(turn - 1)}>↓</button>
+            </div>
+            <span>Turns left: {turn}</span>
           </div>
-          <span>Turns left: {turn}</span>
+        )}
+        <div className="board">
+          {cards.map((card, index) => (
+            <div
+              className={"word " + card.state}
+              onClick={() => toggleCardState(index)}
+            >
+              {!isGuessed(card) && (
+                <>
+                  <span className="player-north">{card.word}</span>
+                  <span className="player-south">{card.word}</span>
+                </>
+              )}
+            </div>
+          ))}
         </div>
-      )}
-      <div className="board">
-        {cards.map((card, index) => (
-          <div
-            className={"word " + card.state}
-            onClick={() => toggleCardState(index)}
-          >
-            {!isGuessed(card) && (
-              <>
-                <span className="player-north">{card.word}</span>
-                <span className="player-south">{card.word}</span>
-              </>
-            )}
-          </div>
-        ))}
       </div>
     </StyledPage>
   );
@@ -62,11 +64,21 @@ const StyledPage = styled.div`
   background: url(${process.env.PUBLIC_URL}/codenames/wooden-table-bg.jpg);
   background-position: center;
   background-size: cover;
+  min-height: 100vh;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    @media screen and (max-height: 600px) {
+      height: 90vh;
+    }
+  }
   .turn-counter {
     display: flex;
     flex-direction: column;
@@ -98,9 +110,12 @@ const StyledPage = styled.div`
     display: flex;
     flex-wrap: wrap;
     width: 800px;
-    height: 600px;
+    height: 100%;
     .word {
       font-size: 22px;
+      @media screen and (max-height: 600px) {
+        font-size: 16px;
+      }
       font-weight: 400;
       position: relative;
       background: linear-gradient(${sand} 50%, #fff 50%);
