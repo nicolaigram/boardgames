@@ -139,6 +139,24 @@ const StyledPage = styled.div`
         span {
           display: none;
         }
+        &.spy::before {
+          background: center url(${process.env.PUBLIC_URL}/codenames/spy.png);
+        }
+        &.bystander::before {
+          background: center
+            url(${process.env.PUBLIC_URL}/codenames/bystander.png);
+        }
+        &.spy::before,
+        &.bystander::before {
+          opacity: 0.5;
+          background-size: contain;
+          background-repeat: no-repeat;
+          content: "";
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
+
         &.green {
           background: ${green_gradient};
         }

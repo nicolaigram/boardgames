@@ -5,9 +5,9 @@ const words: any = {
 
 export enum CardState {
   default = "default",
-  guessedGreen = "guessed green",
-  guessedRed = "guessed red",
-  guessedBlue = "guessed blue",
+  guessedGreen = "guessed spy green",
+  guessedRed = "guessed spy red",
+  guessedBlue = "guessed spy blue",
   guessedBystander = "guessed bystander",
   bystanderNorth = "bystander north",
   bystanderSouth = "bystander south",
