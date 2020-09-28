@@ -141,15 +141,17 @@ const StyledPage = styled.div`
         }
         &.spy::before {
           background: center url(${process.env.PUBLIC_URL}/codenames/spy.png);
+          background-size: contain;
         }
         &.bystander::before {
-          background: center
+          background: bottom
             url(${process.env.PUBLIC_URL}/codenames/bystander.png);
+
+          background-size: 45%;
         }
         &.spy::before,
         &.bystander::before {
           opacity: 0.5;
-          background-size: contain;
           background-repeat: no-repeat;
           content: "";
           display: block;
