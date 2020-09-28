@@ -1,28 +1,57 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { red } from "./util/colors";
 
-export default function index() {
+export default function Codenames() {
+  const [language, setLanguage] = useState("da");
+  const [version, setVersion] = useState("standard");
+
   return (
     <StyledPage>
-      <div className="col">
-        <h2>Danish</h2>
-        <Link to={"/codenames/game/standard/da/default"}>Standard</Link>
-        <Link to={"/codenames/game/duet/da/default"}>Standard (Duet)</Link>
-        <Link to={"/codenames/game/standard/da/deep"}>Deep Undercover</Link>
-        <Link to={"/codenames/game/duet/da/deep"}>Deep Undercover (Duet)</Link>
+      <div className="col options">
+        <h2>Language</h2>
+
+        <div
+          className={"option" + (language === "da" ? " active" : "")}
+          onClick={() => setLanguage("da")}
+        >
+          Danish
+        </div>
+        <div
+          className={"option" + (language === "en" ? " active" : "")}
+          onClick={() => setLanguage("en")}
+        >
+          English
+        </div>
+      </div>
+      <div className="col options">
+        <h2>Version</h2>
+        <div
+          className={"option" + (version === "standard" ? " active" : "")}
+          onClick={() => setVersion("standard")}
+        >
+          Standard
+        </div>
+        <div
+          className={"option" + (version === "duet" ? " active" : "")}
+          onClick={() => setVersion("duet")}
+        >
+          Duet
+        </div>
       </div>
       <div className="col">
-        <h2>English</h2>
-        <Link to={"/codenames/game/standard/en/default"}>Standard</Link>
-        <Link to={"/codenames/game/duet/en/default"}>Standard (Duet)</Link>
-        <Link to={"/codenames/game/standard/en/deep"}>Deep Undercover</Link>
-        <Link to={"/codenames/game/duet/en/deep"}>Deep Undercover (Duet)</Link>
+        <h2>Game</h2>
+        <Link to={`/codenames/game/${version}/${language}/default`}>
+          Standard
+        </Link>
+        <Link to={`/codenames/game/${version}/${language}/deep`}>
+          Deep Undercover
+        </Link>
       </div>
       <div className="col">
         <h2>Tools</h2>
-        <Link to={"/codenames/keycard/duet"}>KeyCard (Duet)</Link>
-        <Link to={"/codenames/keycard/standard"}>KeyCard (Standard)</Link>
+        <Link to={`/codenames/keycard/${version}`}>KeyCard</Link>
       </div>
     </StyledPage>
   );
@@ -40,7 +69,8 @@ const StyledPage = styled.div`
     h2 {
       text-align: center;
     }
-    a {
+    a,
+    .option {
       background: black;
       margin-bottom: 20px;
       color: white;
@@ -48,6 +78,20 @@ const StyledPage = styled.div`
       font-size: 20px;
       padding: 30px;
       text-align: center;
+    }
+  }
+  .options {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0 10px;
+    padding-right: 20px;
+    &:not(:nth-of-type(2)) {
+      padding-right: 10px;
+      margin-right: 0;
+    }
+    .option {
+      &.active {
+        color: ${red};
+      }
     }
   }
 `;
