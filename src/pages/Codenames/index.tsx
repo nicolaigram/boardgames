@@ -103,7 +103,6 @@ const StyledPage = styled.div`
     .option {
       background: radial-gradient(rgb(25, 25, 25), rgb(0, 0, 0));
       border-radius: 8px;
-      box-shadow: 4px 4px 0px #333;
       margin-bottom: 20px;
       color: white;
       text-decoration: none;
