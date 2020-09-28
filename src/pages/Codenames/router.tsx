@@ -7,7 +7,7 @@ import Home from ".";
 export default function CodenamesRouter() {
   return (
     <>
-      <Route path={"/codenames/keycard/:version"}>
+      <Route path={"/codenames/keycard/:version/:preset?"}>
         <KeyCard />
       </Route>
       <Route path={"/codenames/game/:version/:language/:cardset"}>

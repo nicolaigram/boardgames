@@ -1,72 +1,60 @@
 import styled from "@emotion/styled";
+import copy from "copy-to-clipboard";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { blue, green_gradient, green_light, red, sand } from "../util/colors";
-import { getKeys, KeyState, validateKeys } from "./util/keys";
+import { getKeys, KeyState } from "./util/keys";
 
 export default function KeyCard() {
-  const { version } = useParams<any>();
+  const { version, preset } = useParams<any>();
   const [keys, setKeys] = useState<KeyState[]>([]);
   const [gameId, setGameId] = useState("");
-  const [isStarted, setIsStarted] = useState(false);
+  const [urlForFriend, setUrlForFriend] = useState("");
+  const [hideUrl, setHideUrl] = useState(false);
+
   useEffect(() => {
-    validateKeys();
+    if (preset) {
+      let data = JSON.parse(atob(preset));
+      setKeys(data);
+    }
   }, []);
-  const handleStartGame = (e: any) => {
+
+  const resetGame = (e: any) => {
     e.preventDefault();
-    const keys = getKeys(gameId, version);
-    if (!keys) return;
-    setKeys(keys);
-    setIsStarted(true);
+    const [generatedKeys, url] = getKeys(gameId, version);
+    if (!generatedKeys) return;
+    if (url) setUrlForFriend(url);
+    setKeys(generatedKeys);
+    setHideUrl(false);
   };
-  const newGame = () => {
-    setIsStarted(false);
-    setGameId("");
-    setKeys([]);
+
+  const handleCopy = () => {
+    copy(urlForFriend);
+    setHideUrl(true);
   };
+
   return (
     <StyledPage>
-      {!isStarted && (
-        <div className="is-not-started">
-          {version === "duet" && (
-            <>
-              <p>
-                <strong>GUIDE: </strong>Begge spillere indtaster det samme tal,
-                efterfulgt af et bogstav i rækkefølge. For eksempel kan den ene
-                skrive 101a, og den anden 101b.
-              </p>
-              <form onSubmit={handleStartGame}>
-                <input
-                  type="text"
-                  name="gameId"
-                  placeholder="Game ID"
-                  value={gameId}
-                  onChange={(e) => setGameId(e.target.value)}
-                />
-                <input type="submit" value="Start" />
-              </form>
-            </>
-          )}
-          {version === "standard" && (
-            <form onSubmit={handleStartGame}>
-              <input type="submit" value="Start" />
-            </form>
-          )}
+      {!hideUrl && urlForFriend && (
+        <div
+          className="url-share"
+          style={{ width: "100%", wordBreak: "break-all" }}
+        >
+          {urlForFriend}
+          <button onClick={handleCopy}>Copy</button>
         </div>
       )}
 
-      {isStarted && (
-        <div className="is-started">
-          <button id="newGame" onClick={newGame}>
-            Nyt spil
-          </button>
-          <div className="keys">
-            {keys.map((key) => (
-              <div className={"key " + key} />
-            ))}
-          </div>
+      <div className="is-started">
+        <button id="newGame" onClick={resetGame}>
+          Nyt spil
+        </button>
+        <div className="keys">
+          {keys.map((key) => (
+            <div className={"key " + key} />
+          ))}
         </div>
-      )}
+      </div>
     </StyledPage>
   );
 }
@@ -79,11 +67,11 @@ const StyledPage = styled.div`
   min-height: 100vh;
   padding: 20px;
   background: url(${process.env.PUBLIC_URL}/codenames/wooden-table-bg.jpg);
-  .is-not-started {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 20px;
-    border-radius: 8px;
+
+  .url-share {
+    background: white;
   }
+
   button#newGame {
     margin-bottom: 20px;
   }
@@ -110,19 +98,19 @@ const StyledPage = styled.div`
       border: 1px solid black;
       margin: 0.5%;
       border-radius: 8px;
-      &.bystander {
+      &.BYSTANDER {
         background: ${sand};
       }
-      &.assasin {
+      &.ASSASSIN {
         background: black;
       }
-      &.spy {
+      &.SPY {
         background: ${green_gradient};
       }
-      &.red {
+      &.RED {
         background: ${red};
       }
-      &.blue {
+      &.BLUE {
         background: ${blue};
       }
     }
