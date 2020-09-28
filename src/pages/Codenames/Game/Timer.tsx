@@ -55,6 +55,7 @@ const TimerStyled: any = styled.div`
     margin: 0 auto;
     z-index: 99;
     font-size: 30px;
+    transform: rotateZ(-90deg);
   }
   .timer {
     position: absolute;
