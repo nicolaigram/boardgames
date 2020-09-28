@@ -14,11 +14,11 @@ export default function Timer() {
     if (isActive) {
       setTimeout(() => {
         if (timeLeft < 1) {
-          sounds.alarm.play();
+          //   sounds.alarm.play();
           setIsActive(false);
         } else {
           setTimeLeft((timeLeft) => timeLeft - 1);
-          sounds.tick.play();
+          //   sounds.tick.play();
         }
       }, 1000);
     } else {
