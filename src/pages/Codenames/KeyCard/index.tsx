@@ -78,7 +78,7 @@ const StyledPage = styled.div`
   flex-direction: column;
   min-height: 100vh;
   padding: 20px;
-  background: url(${process.env.PUBLIC_URL}/codenames-duet/wooden-table-bg.jpg);
+  background: url(${process.env.PUBLIC_URL}/codenames/wooden-table-bg.jpg);
   .is-not-started {
     background: rgba(255, 255, 255, 0.5);
     padding: 20px;

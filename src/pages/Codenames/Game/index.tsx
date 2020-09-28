@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardState, createCards, getNextCardState } from "../util/cards";
 import { blue, green_gradient, red, sand } from "../util/colors";
+import Timer from "./Timer";
 
 export default function Codenames() {
   const { language, version, cardset } = useParams<{
@@ -28,6 +29,7 @@ export default function Codenames() {
 
   return (
     <StyledPage>
+      {version === "standard" && <Timer />}
       {version === "duet" && (
         <div className="turn-counter">
           <div className="buttons">
@@ -57,7 +59,7 @@ export default function Codenames() {
 }
 
 const StyledPage = styled.div`
-  background: url(${process.env.PUBLIC_URL}/codenames-duet/wooden-table-bg.jpg);
+  background: url(${process.env.PUBLIC_URL}/codenames/wooden-table-bg.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
