@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useEffect, useRef, useState } from "react";
 export default function Timer() {
   const height = 400;
-  const startTime = 3;
+  const startTime = 60;
   const [timeLeft, setTimeLeft] = useState(startTime);
   const [isActive, setIsActive] = useState(false);
   const sounds = {
