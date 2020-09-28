@@ -9,6 +9,7 @@ export default function Codenames() {
 
   return (
     <StyledPage>
+      <h1>Settings</h1>
       <div className="columns">
         <div className="col options">
           <h2>Language</h2>
@@ -40,18 +41,21 @@ export default function Codenames() {
             Duet
           </div>
         </div>
+      </div>
+      <h1>Game</h1>
+      <div className="columns">
         <div className="col">
-          <h2>Game</h2>
+          <h2>Tools</h2>
+          <Link to={`/codenames/keycard/${version}`}>KeyCard</Link>
+        </div>
+        <div className="col">
+          <h2>Board</h2>
           <Link to={`/codenames/game/${version}/${language}/default`}>
             Standard
           </Link>
           <Link to={`/codenames/game/${version}/${language}/deep`}>
             Deep Undercover
           </Link>
-        </div>
-        <div className="col">
-          <h2>Tools</h2>
-          <Link to={`/codenames/keycard/${version}`}>KeyCard</Link>
         </div>
       </div>
     </StyledPage>
@@ -63,6 +67,13 @@ const StyledPage = styled.div`
   background: center url(${process.env.PUBLIC_URL}/codenames/bg.jpeg);
   background-size: cover;
   min-height: 100vh;
+  h1 {
+    font-size: 50px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    -webkit-text-stroke: 1px black;
+  }
   @media screen and (max-width: 750px) {
     width: 100%;
     padding-right: 16px;
@@ -72,9 +83,10 @@ const StyledPage = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.75);
     max-width: 800px;
     margin: 0 auto;
+    margin-bottom: 20px;
   }
   .col {
     padding: 0 10px;
@@ -89,13 +101,17 @@ const StyledPage = styled.div`
     }
     a,
     .option {
-      background: black;
+      background: radial-gradient(rgb(25, 25, 25), rgb(0, 0, 0));
+      border-radius: 8px;
+      box-shadow: 4px 4px 0px #333;
       margin-bottom: 20px;
       color: white;
       text-decoration: none;
       font-size: 20px;
       padding: 30px;
       text-align: center;
+      user-select: none;
+      cursor: pointer;
     }
   }
   .options {
