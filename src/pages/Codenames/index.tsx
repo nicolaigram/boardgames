@@ -61,6 +61,10 @@ const StyledPage = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 20px;
+  flex-wrap: wrap;
+  @media screen and (max-width: 750px) {
+    width: 100%;
+  }
   .col {
     margin-right: 20px;
     display: flex;
