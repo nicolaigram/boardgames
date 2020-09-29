@@ -41,13 +41,26 @@ const StyledPage = styled.div`
     /* flex-wrap: wrap; */
   }
   table {
+    border-spacing: 0;
+    th {
+      text-align: left;
+    }
     width: 100%;
     * {
       font-size: 30px;
     }
-    tr.pass {
-      * {
-        text-decoration: line-through;
+
+    tr {
+      &:nth-of-type(odd) {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      &.pass {
+        * {
+          text-decoration: line-through;
+        }
+      }
+      td {
+        padding: 4px;
       }
     }
   }

@@ -21,13 +21,13 @@ export default function Player({ updateName, player, isStarted }: any) {
           />
         )}
         {isStarted && <h2 id="player-name">{player.name}</h2>}
-        {(name !== player.name || !isStarted) && (
+        {name !== player.name && !isStarted && (
           <button id="set-name">OK</button>
         )}
       </form>
       {isStarted && (
         <div className="money">
-          <span>{player.money}.000$</span>
+          <span>Total money: {player.money}.000$</span>
         </div>
       )}
     </StyledPage>

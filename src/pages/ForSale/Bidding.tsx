@@ -44,7 +44,9 @@ export default function Bidding({ socket, player, visible }: any) {
   return (
     <StyledPage className="island">
       {!isDisabled() && (
-        <p>Current bid: {currentBid === 0 ? "--" : currentBid + ".000$"}</p>
+        <p id="current-bid">
+          Current bid: {currentBid === 0 ? "--" : currentBid + ".000$"}
+        </p>
       )}
       {isDisabled() && (
         <>
@@ -85,6 +87,9 @@ export default function Bidding({ socket, player, visible }: any) {
 }
 
 const StyledPage = styled.div`
+  #current-bid {
+    text-align: center;
+  }
   .buttons {
     justify-content: space-between;
     display: flex;

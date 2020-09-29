@@ -12,7 +12,7 @@ export default function BuyPhase({ table, players }: any) {
       </div>
       <table>
         <thead>
-          <th>NAME</th>
+          <th>PLAYER</th>
           <th>BID</th>
         </thead>
         <tbody>
