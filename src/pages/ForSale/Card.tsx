@@ -3,12 +3,28 @@ import React from "react";
 
 export default function Card({
   card,
+  selected,
+  onClick,
 }: {
   card: { name: string; value: number; id: number };
+  selected?: boolean;
+  onClick?: any;
 }) {
+  const handleClick = () => {
+    if (onClick) onClick();
+  };
   return (
-    <StyledCard id={card.id}>
-      <div className="image"></div>
+    <StyledCard
+      id={card.id}
+      className={selected ? "selected" : ""}
+      onClick={handleClick}
+    >
+      <img
+        src={`${process.env.PUBLIC_URL}/for-sale/homes/tile${padId(
+          card.id
+        )}.png`}
+        alt=""
+      />
     </StyledCard>
   );
 }
@@ -25,7 +41,6 @@ const StyledCard: any = styled.div`
   border: 1px solid black;
   margin-bottom: 10px;
   background: white;
-  height: 380px;
   border-radius: 8px;
   box-shadow: 3px 3px 3px #ccc;
 
@@ -36,15 +51,11 @@ const StyledCard: any = styled.div`
   p {
     text-align: center;
   }
-  .image {
-    width: 100%;
+  img {
     height: 100%;
-    background: ${(props: any) =>
-      `url(${process.env.PUBLIC_URL}/for-sale/homes/tile${padId(
-        props.id
-      )}.png)`};
-    background-size: cover;
-    background-position-x: 0px;
-    background-position-y: 0px;
+    width: 100%;
+  }
+  &.selected {
+    filter: brightness(50%);
   }
 `;

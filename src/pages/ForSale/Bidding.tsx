@@ -35,20 +35,46 @@ export default function Bidding({ socket, player }: any) {
     }
   };
 
+  const isDisabled = () => {
+    return player.pass;
+  };
+
   return (
     <StyledPage className="island">
-      <p>Current bid: {currentBid}.000$</p>
+      {!isDisabled() && (
+        <p>Current bid: {currentBid === 0 ? "--" : currentBid + ".000$"}</p>
+      )}
+      {isDisabled() && (
+        <>
+          <p>You passed.</p> <p>Wait for the next round</p>
+        </>
+      )}
       <div className="buttons">
-        <button onClick={() => changeBid("increase")} id="up">
+        <button
+          onClick={() => changeBid("increase")}
+          id="up"
+          disabled={isDisabled()}
+        >
           UP
         </button>
-        <button onClick={() => changeBid("decrease")} id="down">
-          DOWN
-        </button>
-        <button onClick={sendBid} id="bid">
+
+        <button onClick={sendBid} id="bid" disabled={isDisabled()}>
           BID
         </button>
-        <button onClick={() => socket.emit("pass")} id="pass">
+
+        <button
+          onClick={() => changeBid("decrease")}
+          id="down"
+          disabled={isDisabled()}
+        >
+          DOWN
+        </button>
+
+        <button
+          onClick={() => socket.emit("pass")}
+          id="pass"
+          disabled={isDisabled()}
+        >
           PASS
         </button>
       </div>

@@ -15,16 +15,27 @@ export default function Home() {
   const [info, setInfo] = useState("");
   const [isStarted, setIsStarted] = useState(false);
   const [isBoard, setIsBoard] = useState(false);
+  const [phase, setPhase] = useState("");
 
   useEffect(() => {
     setSocket(socketIOClient(ENDPOINT));
   }, []);
+
+  const resetGame = () => {
+    setInfo("");
+    setIsStarted(false);
+    setIsBoard(false);
+  };
 
   useEffect(() => {
     if (!socket) return;
 
     socket.on("reconnect_attempt", () => {
       setInfo(`Trying to connect to ${ENDPOINT} ...`);
+    });
+
+    socket.on("connect", () => {
+      resetGame();
     });
 
     socket.on("connect_failed", () => {
@@ -36,6 +47,7 @@ export default function Home() {
     });
 
     socket.on("player", (player: any) => {
+      console.log(player);
       setPlayer(player);
     });
 
@@ -54,11 +66,22 @@ export default function Home() {
     socket.on("game-state", (data: boolean) => {
       setIsStarted(data);
     });
+
+    socket.on("set-phase", (data: string) => {
+      setPhase(data);
+    });
   }, [socket]);
 
   if (info) return <h1>{info}</h1>;
   if (isBoard)
-    return <Board isStarted={isStarted} table={table} players={players} />;
+    return (
+      <Board
+        isStarted={isStarted}
+        table={table}
+        players={players}
+        phase={phase}
+      />
+    );
 
   return (
     <StyledPage>
@@ -68,9 +91,11 @@ export default function Home() {
           player={player}
         />
 
-        <Bidding socket={socket} player={player} />
+        {phase === "buying houses" && (
+          <Bidding socket={socket} player={player} />
+        )}
 
-        <Hand player={player} />
+        <Hand player={player} socket={socket} />
 
         {!isStarted && (
           <div
