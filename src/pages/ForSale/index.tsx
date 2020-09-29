@@ -7,7 +7,10 @@ import Bidding from "./Bidding";
 import Hand from "./Hand";
 import Options from "./Options";
 import InfoPage from "./ErrorPages/InfoPage";
-const ENDPOINT = "http://192.168.8.105:4001";
+const ENDPOINT =
+  process.env.NODE_ENV === "development"
+    ? "http://192.168.8.105:4001"
+    : "https://forsale.ngram.dk";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
 export default function Home() {
@@ -19,6 +22,8 @@ export default function Home() {
   const [isStarted, setIsStarted] = useState(false);
   const [isBoard, setIsBoard] = useState(false);
   const [phase, setPhase] = useState("");
+
+  console.log(process.env.NODE_ENV);
 
   useEffect(() => {
     setSocket(socketIOClient(ENDPOINT));
