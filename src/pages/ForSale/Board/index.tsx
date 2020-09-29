@@ -6,7 +6,6 @@ export default function Board({ isStarted, players, table }: any) {
   return (
     <div>
       <div>
-        <h2>Table</h2>
         {table.map((card: any) => (
           <Card card={card} />
         ))}

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
 
 export default function Player({ updateName, player }: any) {
   const [name, setName] = useState("");
@@ -15,28 +14,33 @@ export default function Player({ updateName, player }: any) {
   };
 
   return (
-    <StyledPage>
+    <StyledPage className="island">
       <form onSubmit={handleNameChange}>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {name !== player.name && <button>Set name</button>}
+        {name !== player.name && <button id="set-name">Set name</button>}
       </form>
-      <div>
-        <span>Money: {player.money}</span>
+      <div className="money">
+        <span>{player.money}.000$</span>
       </div>
-
-      {player.cards.map((card: any) => (
-        <Card card={card} />
-      ))}
     </StyledPage>
   );
 }
 
 const StyledPage = styled.div`
-  background: rgba(255, 255, 255, 0.6);
-  padding: 20px;
-  border-radius: 8px;
+  input,
+  button {
+    height: 60px;
+    width: 100%;
+    text-align: center;
+  }
+  .money {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    color: green;
+  }
 `;

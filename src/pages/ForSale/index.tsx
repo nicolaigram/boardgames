@@ -2,15 +2,15 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import Board from "./Board";
-import Card from "./Card";
 import Player from "./Player";
+import Bidding from "./Bidding";
+import Hand from "./Hand";
 const ENDPOINT = "http://192.168.8.105:4001";
 
 export default function Home() {
   const [socket, setSocket] = useState<any>(null);
   const [player, setPlayer] = useState({ id: "", money: 0, cards: [] });
   const [players, setPlayers] = useState([]);
-  const [currentBid, setCurrentBid] = useState(0);
   const [table, setTable] = useState([]);
   const [info, setInfo] = useState("");
   const [isStarted, setIsStarted] = useState(false);
@@ -35,12 +35,7 @@ export default function Home() {
       setIsBoard(true);
     });
 
-    socket.on("reset-bids", () => {
-      setCurrentBid(0);
-    });
-
     socket.on("player", (player: any) => {
-      console.log(player);
       setPlayer(player);
     });
 
@@ -53,7 +48,6 @@ export default function Home() {
     });
 
     socket.on("table", (data: any) => {
-      console.log(data);
       setTable(data);
     });
 
@@ -61,30 +55,6 @@ export default function Home() {
       setIsStarted(data);
     });
   }, [socket]);
-
-  const changeBid = (type: any) => {
-    if (type === "increase") {
-      setCurrentBid((c) => {
-        if (c < player.money) {
-          return c + 1;
-        } else {
-          return c;
-        }
-      });
-    } else {
-      setCurrentBid((c) => {
-        if (c > 0) {
-          return c - 1;
-        } else {
-          return c;
-        }
-      });
-    }
-  };
-
-  const sendBid = () => {
-    socket.emit("bid", currentBid);
-  };
 
   if (info) return <h1>{info}</h1>;
   if (isBoard)
@@ -98,19 +68,22 @@ export default function Home() {
           player={player}
         />
 
-        <p>current bid: {currentBid}</p>
-        <button onClick={() => changeBid("increase")}>UP</button>
-        <button onClick={() => changeBid("decrease")}>DOWN</button>
-        <button onClick={sendBid}>BID</button>
-        <button onClick={() => socket.emit("pass")}>PASS</button>
-      </div>
+        <Bidding socket={socket} player={player} />
 
-      {!isStarted && (
-        <>
-          <button onClick={() => socket.emit("start-game")}>Start Game</button>
-          <button onClick={() => socket.emit("is-board")}>Board</button>
-        </>
-      )}
+        <Hand player={player} />
+
+        {!isStarted && (
+          <div
+            className="island"
+            style={{ display: "flex", justifyContent: "space-evenly" }}
+          >
+            <button onClick={() => socket.emit("start-game")}>
+              Start Game
+            </button>
+            <button onClick={() => socket.emit("is-board")}>Board</button>
+          </div>
+        )}
+      </div>
     </StyledPage>
   );
 }
@@ -118,9 +91,19 @@ export default function Home() {
 const StyledPage = styled.div`
   min-height: 100vh;
   background-color: #b5d3e7;
+  padding: 10px;
   padding-top: 40px;
+  * {
+    font-size: 30px;
+  }
   .container {
     max-width: 600px;
     margin: 0 auto;
+  }
+  .island {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
   }
 `;
