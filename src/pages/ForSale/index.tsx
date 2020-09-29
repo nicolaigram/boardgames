@@ -9,7 +9,7 @@ import Options from "./Options";
 import InfoPage from "./ErrorPages/InfoPage";
 const ENDPOINT =
   process.env.NODE_ENV === "development"
-    ? "http://192.168.8.105:4001"
+    ? "https://forsale.ngram.dk"
     : "https://forsale.ngram.dk";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
@@ -85,7 +85,8 @@ export default function Home() {
     });
   }, [socket]);
 
-  if (info) return <InfoPage info={info} />;
+  if (info)
+    return <InfoPage info={info} reset={() => socket.emit("reset-game")} />;
   if (isBoard)
     return (
       <Board
