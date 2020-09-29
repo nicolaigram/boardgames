@@ -7,12 +7,16 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
+import ForSale from "./pages/ForSale";
 import CodenamesRouter from "./pages/Codenames/router";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router basename={process.env.PUBLIC_URL}>
       <CodenamesRouter />
+      <Route path={"/for-sale"}>
+        <ForSale />
+      </Route>
       <Route path={"/munchkin"}>
         <Munchkin />
       </Route>

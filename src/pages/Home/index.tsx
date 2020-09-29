@@ -9,6 +9,7 @@ export default function Home() {
       <Link to={"/star-realms"}>Star Realms</Link>
       <Link to={"/munchkin"}>Munchkin</Link>
       <Link to={"/codenames"}>Codenames</Link>
+      <Link to={"/for-sale"}>For Sale</Link>
     </StyledPage>
   );
 }
