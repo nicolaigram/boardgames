@@ -23,6 +23,14 @@ export default function Home() {
   useEffect(() => {
     if (!socket) return;
 
+    socket.on("reconnect_attempt", () => {
+      setInfo("Trying to connect...");
+    });
+
+    socket.on("connect_failed", () => {
+      setInfo("Connection failed");
+    });
+
     socket.on("is-board", () => {
       setIsBoard(true);
     });
