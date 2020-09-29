@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/boardgames/static/css/main.78369ade.chunk.css",
-    "main.js": "/boardgames/static/js/main.6504cdb9.chunk.js",
-    "main.js.map": "/boardgames/static/js/main.6504cdb9.chunk.js.map",
+    "main.js": "/boardgames/static/js/main.4f5246ab.chunk.js",
+    "main.js.map": "/boardgames/static/js/main.4f5246ab.chunk.js.map",
     "runtime-main.js": "/boardgames/static/js/runtime-main.e4470165.js",
     "runtime-main.js.map": "/boardgames/static/js/runtime-main.e4470165.js.map",
-    "static/js/2.c0c37b8f.chunk.js": "/boardgames/static/js/2.c0c37b8f.chunk.js",
-    "static/js/2.c0c37b8f.chunk.js.map": "/boardgames/static/js/2.c0c37b8f.chunk.js.map",
+    "static/js/2.c9f49b98.chunk.js": "/boardgames/static/js/2.c9f49b98.chunk.js",
+    "static/js/2.c9f49b98.chunk.js.map": "/boardgames/static/js/2.c9f49b98.chunk.js.map",
     "index.html": "/boardgames/index.html",
-    "precache-manifest.cc679eb6a6cc13d863b61139c96f3d43.js": "/boardgames/precache-manifest.cc679eb6a6cc13d863b61139c96f3d43.js",
+    "precache-manifest.d2c3c310bfc0fdd3862c6cc53d704f9c.js": "/boardgames/precache-manifest.d2c3c310bfc0fdd3862c6cc53d704f9c.js",
     "service-worker.js": "/boardgames/service-worker.js",
     "static/css/main.78369ade.chunk.css.map": "/boardgames/static/css/main.78369ade.chunk.css.map",
-    "static/js/2.c0c37b8f.chunk.js.LICENSE.txt": "/boardgames/static/js/2.c0c37b8f.chunk.js.LICENSE.txt"
+    "static/js/2.c9f49b98.chunk.js.LICENSE.txt": "/boardgames/static/js/2.c9f49b98.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e4470165.js",
-    "static/js/2.c0c37b8f.chunk.js",
+    "static/js/2.c9f49b98.chunk.js",
     "static/css/main.78369ade.chunk.css",
-    "static/js/main.6504cdb9.chunk.js"
+    "static/js/main.4f5246ab.chunk.js"
   ]
 }
