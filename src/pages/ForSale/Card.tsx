@@ -5,31 +5,36 @@ export default function Card({
   card,
   selected,
   onClick,
+  type,
 }: {
-  card: { name: string; value: number; id: number };
+  card: { name: string; value: number };
   selected?: boolean;
   onClick?: any;
+  type?: string;
 }) {
   const handleClick = () => {
     if (onClick) onClick();
   };
+
+  const imgPath = () => {
+    if (type === "cheques") {
+      return `${process.env.PUBLIC_URL}/for-sale/cheques/tile${padValue(
+        card.value
+      )}.png`;
+    }
+    return `${process.env.PUBLIC_URL}/for-sale/homes/tile${padValue(
+      card.value
+    )}.png`;
+  };
+
   return (
-    <StyledCard
-      id={card.id}
-      className={selected ? "selected" : ""}
-      onClick={handleClick}
-    >
-      <img
-        src={`${process.env.PUBLIC_URL}/for-sale/homes/tile${padId(
-          card.id
-        )}.png`}
-        alt=""
-      />
+    <StyledCard className={selected ? "selected" : ""} onClick={handleClick}>
+      <img src={imgPath()} alt="" />
     </StyledCard>
   );
 }
 
-const padId = (id: number) => {
+const padValue = (id: number) => {
   let newId = id.toString();
   if (newId.length === 1) return "00" + id;
   if (newId.length === 2) return "0" + id;
@@ -41,7 +46,8 @@ const StyledCard: any = styled.div`
   border: 1px solid black;
   margin-bottom: 10px;
   background: white;
-  border-radius: 8px;
+  border-radius: 16px;
+  overflow: hidden;
   box-shadow: 3px 3px 3px #ccc;
 
   display: flex;

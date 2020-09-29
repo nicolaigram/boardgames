@@ -5,7 +5,8 @@ import Board from "./Board";
 import Player from "./Player";
 import Bidding from "./Bidding";
 import Hand from "./Hand";
-const ENDPOINT = "http://192.168.8.105:4001";
+const ENDPOINT = "https://192.168.8.105:4001";
+const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
 export default function Home() {
   const [socket, setSocket] = useState<any>(null);
@@ -28,10 +29,16 @@ export default function Home() {
   };
 
   useEffect(() => {
+    horn.play();
+
     if (!socket) return;
 
     socket.on("reconnect_attempt", () => {
       setInfo(`Trying to connect to ${ENDPOINT} ...`);
+    });
+
+    socket.on("disconnect-all", () => {
+      window.location.reload();
     });
 
     socket.on("connect", () => {
@@ -108,6 +115,9 @@ export default function Home() {
             <button onClick={() => socket.emit("is-board")}>Board</button>
           </div>
         )}
+        <button onClick={() => socket.emit("reset-game")} id="reset-btn">
+          Reset Game
+        </button>
       </div>
     </StyledPage>
   );
@@ -130,5 +140,9 @@ const StyledPage = styled.div`
     padding: 20px;
     border-radius: 8px;
     margin-top: 10px;
+  }
+  #reset-btn {
+    margin-top: 60px;
+    width: 100%;
   }
 `;

@@ -12,7 +12,9 @@ export default function Board({ isStarted, players, table, phase }: any) {
         {phase === "buying houses" && (
           <BuyPhase players={players} table={table} />
         )}
-        {phase === "selling houses" && <SellPhase />}
+        {phase === "selling houses" && (
+          <SellPhase players={players} table={table} />
+        )}
       </div>
     </StyledPage>
   );
