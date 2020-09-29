@@ -97,6 +97,7 @@ export default function Home() {
         <Player
           updateName={(name: string) => socket.emit("set-name", name)}
           player={player}
+          isStarted={isStarted}
         />
 
         <Bidding
@@ -105,7 +106,7 @@ export default function Home() {
           visible={phase === "buying houses"}
         />
 
-        <Hand player={player} socket={socket} render={isStarted} />
+        <Hand player={player} socket={socket} visible={isStarted} />
 
         <Options socket={socket} visible={!isStarted} />
 

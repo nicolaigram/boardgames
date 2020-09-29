@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Hand({ player, socket, visible }: any) {
+  console.log(player);
   const [selectedCard, setSelectedCard] = useState(-1);
   const handleSelect = (card: any) => {
     setSelectedCard(card.id);
