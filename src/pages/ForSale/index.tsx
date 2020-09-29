@@ -5,7 +5,7 @@ import Board from "./Board";
 import Player from "./Player";
 import Bidding from "./Bidding";
 import Hand from "./Hand";
-const ENDPOINT = "https://192.168.8.105:4001";
+const ENDPOINT = "http://192.168.8.105:4001";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
 export default function Home() {
