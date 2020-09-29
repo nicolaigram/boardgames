@@ -16,12 +16,14 @@ export default function SellPhase({ table, players }: any) {
           <th>MONEY</th>
         </thead>
         <tbody>
-          {players.map((player: any) => (
-            <tr className={player.pass ? "pass" : ""}>
-              <td>{player.name}</td>
-              <td>{player.money}</td>
-            </tr>
-          ))}
+          {players
+            .sort((a: any, b: any) => b.money - a.money)
+            .map((player: any) => (
+              <tr className={player.pass ? "pass" : ""}>
+                <td>{player.name}</td>
+                <td>{player.money}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </>

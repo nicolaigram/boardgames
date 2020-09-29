@@ -10,16 +10,17 @@ export default function BuyPhase({ table, players }: any) {
           <Card card={card} />
         ))}
       </div>
-      <div>
-        <table>
-          <thead>
-            <th>NAME</th>
-            {/* <th>Money</th> */}
-            <th>BID</th>
-            {/* <th>Pass</th> */}
-          </thead>
-          <tbody>
-            {players.map((player: any) => (
+      <table>
+        <thead>
+          <th>NAME</th>
+          {/* <th>Money</th> */}
+          <th>BID</th>
+          {/* <th>Pass</th> */}
+        </thead>
+        <tbody>
+          {players
+            .sort((a: any, b: any) => b.currentBid - a.currentBid)
+            .map((player: any) => (
               <tr className={player.pass ? "pass" : ""}>
                 <td>{player.name}</td>
                 {/* <td>{player.money}</td> */}
@@ -27,9 +28,8 @@ export default function BuyPhase({ table, players }: any) {
                 {/* <td>{player.pass.toString()}</td> */}
               </tr>
             ))}
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </>
   );
 }
