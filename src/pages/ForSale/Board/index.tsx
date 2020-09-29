@@ -3,7 +3,13 @@ import React from "react";
 import BuyPhase from "./BuyPhase";
 import SellPhase from "./SellPhase";
 
-export default function Board({ isStarted, players, table, phase }: any) {
+export default function Board({
+  isStarted,
+  players,
+  table,
+  phase,
+  socket,
+}: any) {
   if (!isStarted)
     return (
       <StyledPage>
@@ -17,7 +23,7 @@ export default function Board({ isStarted, players, table, phase }: any) {
           <BuyPhase players={players} table={table} />
         )}
         {phase === "selling houses" && (
-          <SellPhase players={players} table={table} />
+          <SellPhase players={players} table={table} socket={socket} />
         )}
       </div>
     </StyledPage>
