@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 
-export default function Bidding({ socket, player }: any) {
+export default function Bidding({ socket, player, visible }: any) {
   const [currentBid, setCurrentBid] = useState(0);
 
   useEffect(() => {
@@ -38,6 +38,8 @@ export default function Bidding({ socket, player }: any) {
   const isDisabled = () => {
     return player.pass;
   };
+
+  if (!visible) return null;
 
   return (
     <StyledPage className="island">

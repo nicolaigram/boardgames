@@ -5,6 +5,7 @@ import Board from "./Board";
 import Player from "./Player";
 import Bidding from "./Bidding";
 import Hand from "./Hand";
+import Options from "./Options";
 const ENDPOINT = "http://192.168.8.105:4001";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
@@ -98,23 +99,16 @@ export default function Home() {
           player={player}
         />
 
-        {phase === "buying houses" && (
-          <Bidding socket={socket} player={player} />
-        )}
+        <Bidding
+          socket={socket}
+          player={player}
+          visible={phase === "buying houses"}
+        />
 
-        <Hand player={player} socket={socket} />
+        <Hand player={player} socket={socket} render={isStarted} />
 
-        {!isStarted && (
-          <div
-            className="island"
-            style={{ display: "flex", justifyContent: "space-evenly" }}
-          >
-            <button onClick={() => socket.emit("start-game")}>
-              Start Game
-            </button>
-            <button onClick={() => socket.emit("is-board")}>Board</button>
-          </div>
-        )}
+        <Options socket={socket} visible={!isStarted} />
+
         <button onClick={() => socket.emit("reset-game")} id="reset-btn">
           Reset Game
         </button>

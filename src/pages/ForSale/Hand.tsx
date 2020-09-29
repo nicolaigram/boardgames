@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
-export default function Hand({ player, socket }: any) {
+export default function Hand({ player, socket, visible }: any) {
   const [selectedCard, setSelectedCard] = useState(-1);
   const handleSelect = (card: any) => {
     setSelectedCard(card.id);
@@ -16,6 +16,8 @@ export default function Hand({ player, socket }: any) {
       setSelectedCard(-1);
     });
   }, []);
+
+  if (!visible) return null;
 
   return (
     <StyledHand className="island">
