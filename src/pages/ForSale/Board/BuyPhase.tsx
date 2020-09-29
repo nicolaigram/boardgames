@@ -13,9 +13,7 @@ export default function BuyPhase({ table, players }: any) {
       <table>
         <thead>
           <th>NAME</th>
-          {/* <th>Money</th> */}
           <th>BID</th>
-          {/* <th>Pass</th> */}
         </thead>
         <tbody>
           {players
@@ -23,9 +21,7 @@ export default function BuyPhase({ table, players }: any) {
             .map((player: any) => (
               <tr className={player.pass ? "pass" : ""}>
                 <td>{player.name}</td>
-                {/* <td>{player.money}</td> */}
                 <td>{player.currentBid}</td>
-                {/* <td>{player.pass.toString()}</td> */}
               </tr>
             ))}
         </tbody>
