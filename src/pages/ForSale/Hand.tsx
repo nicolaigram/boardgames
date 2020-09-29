@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Hand({ player, socket, visible }: any) {
-  console.log(player);
   const [selectedCard, setSelectedCard] = useState(-1);
   const handleSelect = (card: any) => {
     setSelectedCard(card.id);
@@ -13,10 +12,9 @@ export default function Hand({ player, socket, visible }: any) {
   useEffect(() => {
     if (!socket) return;
     socket.on("reset-cards", () => {
-      console.log("resetting cards");
       setSelectedCard(-1);
     });
-  }, []);
+  }, [socket]);
 
   if (!visible) return null;
 

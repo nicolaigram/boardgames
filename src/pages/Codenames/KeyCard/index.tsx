@@ -2,13 +2,13 @@ import styled from "@emotion/styled";
 import copy from "copy-to-clipboard";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { blue, green_gradient, green_light, red, sand } from "../util/colors";
+import { blue, green_gradient, red, sand } from "../util/colors";
 import { getKeys, KeyState } from "./util/keys";
 
 export default function KeyCard() {
   const { version, preset } = useParams<any>();
   const [keys, setKeys] = useState<KeyState[]>([]);
-  const [gameId, setGameId] = useState("");
+  const [gameId] = useState("");
   const [urlForFriend, setUrlForFriend] = useState("");
   const [hideUrl, setHideUrl] = useState(false);
 
@@ -17,7 +17,7 @@ export default function KeyCard() {
       let data = JSON.parse(atob(preset));
       setKeys(data);
     }
-  }, []);
+  }, [preset]);
 
   const resetGame = (e: any) => {
     e.preventDefault();

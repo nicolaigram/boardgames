@@ -1,8 +1,5 @@
 import styled from "@emotion/styled";
-import { create } from "domain";
 import React, { useState } from "react";
-import { start } from "repl";
-import LaserShot from "./LaserShot";
 import PlayersPrompt from "./PlayersPrompt";
 
 interface Player {
@@ -10,7 +7,7 @@ interface Player {
 }
 
 export default function StarRealms() {
-  const [startHp, setStartHp] = useState(50);
+  const [startHp] = useState(50);
   const createPlayer = (): Player => ({ hp: startHp });
   const [players, setPlayers] = useState<Player[]>([]);
   const [showDialog, setShowDialog] = useState("player-count");

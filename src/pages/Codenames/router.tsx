@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Codenames from "./Game";
 import KeyCard from "./KeyCard";
 import Home from ".";

@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
 import React from "react";
-import Card from "../Card";
 import BuyPhase from "./BuyPhase";
 import SellPhase from "./SellPhase";
 
 export default function Board({ isStarted, players, table, phase }: any) {
-  if (!isStarted) return <h1>Waiting to start</h1>;
+  if (!isStarted)
+    return (
+      <StyledPage>
+        <h1>Waiting to start</h1>
+      </StyledPage>
+    );
   return (
     <StyledPage>
       <div className="container">
@@ -24,6 +28,9 @@ const StyledPage = styled.div`
   background-color: #b5d3e7;
   min-height: 100vh;
   padding-top: 20px;
+  h1 {
+    text-align: center;
+  }
   .container {
     max-width: 600px;
     margin: 0 auto;

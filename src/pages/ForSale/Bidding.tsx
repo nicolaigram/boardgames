@@ -9,7 +9,7 @@ export default function Bidding({ socket, player, visible }: any) {
     socket.on("reset-bids", () => {
       setCurrentBid(0);
     });
-  }, []);
+  }, [socket]);
 
   const sendBid = () => {
     socket.emit("bid", currentBid);

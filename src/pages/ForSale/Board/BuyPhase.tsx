@@ -21,7 +21,9 @@ export default function BuyPhase({ table, players }: any) {
             .map((player: any) => (
               <tr className={player.pass ? "pass" : ""}>
                 <td>{player.name}</td>
-                <td>{player.currentBid}</td>
+                <td>
+                  {player.currentBid > 0 ? player.currentBid + ".000$" : 0}
+                </td>
               </tr>
             ))}
         </tbody>

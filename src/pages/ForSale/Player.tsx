@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function Player({ updateName, player, isStarted }: any) {
   const [name, setName] = useState("");
@@ -21,11 +21,15 @@ export default function Player({ updateName, player, isStarted }: any) {
           />
         )}
         {isStarted && <h2 id="player-name">{player.name}</h2>}
-        {name !== player.name && <button id="set-name">OK</button>}
+        {(name !== player.name || !isStarted) && (
+          <button id="set-name">OK</button>
+        )}
       </form>
-      <div className="money">
-        <span>{player.money}.000$</span>
-      </div>
+      {isStarted && (
+        <div className="money">
+          <span>{player.money}.000$</span>
+        </div>
+      )}
     </StyledPage>
   );
 }

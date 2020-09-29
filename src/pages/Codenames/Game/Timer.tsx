@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 export default function Timer() {
   const startTime = 60;
   const [timeLeft, setTimeLeft] = useState(startTime);
   const [isActive, setIsActive] = useState(false);
-  const sounds = {
-    tick: new Audio(process.env.PUBLIC_URL + "/codenames/alarm-press.mp3"),
-    alarm: new Audio(process.env.PUBLIC_URL + "/codenames/alarm-bell.mp3"),
-  };
+  // const sounds = {
+  //   tick: new Audio(process.env.PUBLIC_URL + "/codenames/alarm-press.mp3"),
+  //   alarm: new Audio(process.env.PUBLIC_URL + "/codenames/alarm-bell.mp3"),
+  // };
 
   useEffect(() => {
     if (isActive) {

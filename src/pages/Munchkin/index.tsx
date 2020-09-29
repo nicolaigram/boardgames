@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { env } from "process";
 import React, { useState } from "react";
 
 interface Player {
@@ -11,7 +10,7 @@ interface Player {
 }
 
 export default function Munchkin() {
-  const [startHp, setStartHp] = useState(50);
+  // const [startHp, setStartHp] = useState(50);
 
   const colors = [
     "#915A9A", // Purple

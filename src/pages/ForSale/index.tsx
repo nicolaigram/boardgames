@@ -6,6 +6,7 @@ import Player from "./Player";
 import Bidding from "./Bidding";
 import Hand from "./Hand";
 import Options from "./Options";
+import InfoPage from "./ErrorPages/InfoPage";
 const ENDPOINT = "http://192.168.8.105:4001";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
@@ -55,7 +56,6 @@ export default function Home() {
     });
 
     socket.on("player", (player: any) => {
-      console.log(player);
       setPlayer(player);
     });
 
@@ -80,7 +80,7 @@ export default function Home() {
     });
   }, [socket]);
 
-  if (info) return <h1>{info}</h1>;
+  if (info) return <InfoPage info={info} />;
   if (isBoard)
     return (
       <Board
