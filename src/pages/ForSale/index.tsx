@@ -9,7 +9,7 @@ import Options from "./Options";
 import InfoPage from "./ErrorPages/InfoPage";
 const ENDPOINT =
   process.env.NODE_ENV === "development"
-    ? "https://forsale.ngram.dk"
+    ? "https://localhost:4001"
     : "https://forsale.ngram.dk";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
