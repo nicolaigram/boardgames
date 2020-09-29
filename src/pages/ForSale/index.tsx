@@ -24,7 +24,7 @@ export default function Home() {
     if (!socket) return;
 
     socket.on("reconnect_attempt", () => {
-      setInfo("Trying to connect...");
+      setInfo(`Trying to connect to ${ENDPOINT} ...`);
     });
 
     socket.on("connect_failed", () => {
