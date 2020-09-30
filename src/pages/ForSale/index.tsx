@@ -87,7 +87,13 @@ export default function Home() {
   }, [socket]);
 
   if (info)
-    return <InfoPage info={info} reset={() => socket.emit("reset-game")} />;
+    return (
+      <InfoPage
+        info={info}
+        reset={() => socket.emit("reset-game")}
+        socket={socket}
+      />
+    );
   if (isBoard)
     return (
       <Board

@@ -11,6 +11,10 @@ export default function SellPhase({
   sales,
   setSales,
 }: any) {
+  const clearReveal = () => {
+    socket.emit("reset-sales");
+  };
+
   if (sales.length > 1) {
     return (
       <SalesReveal>
@@ -31,7 +35,7 @@ export default function SellPhase({
             </div>
           ))}
         </div>
-        <Button onClick={() => setSales([])} id="btn-next">
+        <Button onClick={clearReveal} id="btn-next">
           Next
         </Button>
       </SalesReveal>
@@ -57,7 +61,7 @@ export default function SellPhase({
             .map((player: any) => (
               <tr className={player.pass ? "pass" : ""}>
                 <td>{player.name}</td>
-                <td>{player.money}</td>
+                <td>{player.money > 0 ? player.money + ".000$" : 0}</td>
               </tr>
             ))}
         </tbody>
