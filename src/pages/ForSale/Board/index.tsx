@@ -9,6 +9,8 @@ export default function Board({
   table,
   phase,
   socket,
+  sales,
+  setSales,
 }: any) {
   if (!isStarted)
     return (
@@ -23,7 +25,13 @@ export default function Board({
           <BuyPhase players={players} table={table} />
         )}
         {phase === "selling houses" && (
-          <SellPhase players={players} table={table} socket={socket} />
+          <SellPhase
+            players={players}
+            table={table}
+            socket={socket}
+            sales={sales}
+            setSales={setSales}
+          />
         )}
       </div>
     </StyledPage>

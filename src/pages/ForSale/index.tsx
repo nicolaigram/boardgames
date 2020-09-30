@@ -9,7 +9,7 @@ import Options from "./Options";
 import InfoPage from "./ErrorPages/InfoPage";
 const ENDPOINT =
   process.env.NODE_ENV === "development"
-    ? "https://localhost:4001"
+    ? "http://localhost:4001"
     : "https://forsale.ngram.dk";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
@@ -22,6 +22,8 @@ export default function Home() {
   const [isStarted, setIsStarted] = useState(false);
   const [isBoard, setIsBoard] = useState(false);
   const [phase, setPhase] = useState("");
+  const [sales, setSales] = useState([]);
+  const [clickedReset, setClickedReset] = useState(false);
 
   console.log(process.env.NODE_ENV);
 
@@ -83,7 +85,23 @@ export default function Home() {
     socket.on("set-phase", (data: string) => {
       setPhase(data);
     });
+
+    socket.on("reveal-sales", (data: any) => {
+      setSales(data);
+    });
   }, [socket]);
+
+  const handleResetGame = () => {
+    if (!clickedReset) {
+      setClickedReset(true);
+      setTimeout(() => {
+        setClickedReset(false);
+      }, 3000);
+      return;
+    }
+    socket.emit("reset-game");
+    setClickedReset(false);
+  };
 
   if (info)
     return <InfoPage info={info} reset={() => socket.emit("reset-game")} />;
@@ -95,6 +113,8 @@ export default function Home() {
         players={players}
         phase={phase}
         socket={socket}
+        sales={sales}
+        setSales={setSales}
       />
     );
 
@@ -113,12 +133,17 @@ export default function Home() {
           visible={phase === "buying houses"}
         />
 
-        <Hand player={player} socket={socket} visible={isStarted} />
+        <Hand
+          player={player}
+          socket={socket}
+          visible={isStarted}
+          disabled={sales.length > 0}
+        />
 
         <Options socket={socket} visible={!isStarted} />
 
-        <button onClick={() => socket.emit("reset-game")} id="reset-btn">
-          Reset Game
+        <button onClick={handleResetGame} id="reset-btn">
+          {!clickedReset ? "Reset Game" : "Are you sure?"}
         </button>
       </div>
     </StyledPage>

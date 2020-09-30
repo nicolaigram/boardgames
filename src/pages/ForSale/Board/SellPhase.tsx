@@ -3,23 +3,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { setInterval } from "timers";
 import Card from "../Card";
 
-export default function SellPhase({ table, players, socket }: any) {
-  const [sales, setSales] = useState([]);
-
-  useEffect(() => {
-    if (!socket) return;
-    socket.on("reveal-sales", (data: any) => {
-      setSales(data);
-    });
-  });
-
-  useEffect(() => {
-    if (!socket) return;
-    socket.on("reveal-sales", (data: any) => {
-      setSales(data);
-    });
-  }, [socket]);
-
+export default function SellPhase({
+  table,
+  players,
+  socket,
+  sales,
+  setSales,
+}: any) {
   if (sales.length > 1) {
     return (
       <SalesReveal>
