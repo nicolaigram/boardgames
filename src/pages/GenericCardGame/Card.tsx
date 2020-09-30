@@ -1,16 +1,30 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { Draggable } from "react-beautiful-dnd";
 
-export default function Card({ card }: any) {
+export default function Card({ card, index }: any) {
   return (
-    <StyledCard>
-      <img src={process.env.PUBLIC_URL + card.url} alt="" />
-    </StyledCard>
+    <Draggable draggableId={card.id} index={index}>
+      {(provided, snapshot) => (
+        <StyledCard
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          style={{ ...provided.draggableProps.style }}
+        >
+          <img
+            src={process.env.PUBLIC_URL + card.url}
+            draggable={false}
+            alt=""
+          />
+        </StyledCard>
+      )}
+    </Draggable>
   );
 }
 
 const StyledCard = styled.div`
-  width: 200px;
+  flex: 0 0 200px;
   img {
     height: 100%;
     width: 100%;
