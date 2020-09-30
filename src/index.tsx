@@ -9,10 +9,12 @@ import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
 import ForSale from "./pages/ForSale";
 import CodenamesRouter from "./pages/Codenames/router";
+import GenericCardGame from "./pages/GenericCardGame";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={process.env.PUBLIC_URL}>
+    <GenericCardGame />
+    {/* <Router basename={process.env.PUBLIC_URL}>
       <CodenamesRouter />
       <Route path={"/for-sale"}>
         <ForSale />
@@ -29,7 +31,7 @@ ReactDOM.render(
       <Route exact path={"/"}>
         <Home />
       </Route>
-    </Router>
+    </Router> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
