@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import React, { useEffect, useRef, useState } from "react";
 import { setInterval } from "timers";
 import Card from "../Card";
+import Button from "../components/Button";
 
 export default function SellPhase({
   table,
@@ -30,9 +31,9 @@ export default function SellPhase({
             </div>
           ))}
         </div>
-        <button onClick={() => setSales([])} id="btn-next">
+        <Button onClick={() => setSales([])} id="btn-next">
           Next
-        </button>
+        </Button>
       </SalesReveal>
     );
   }

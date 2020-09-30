@@ -24,8 +24,6 @@ export default function Home() {
   const [phase, setPhase] = useState("");
   const [sales, setSales] = useState([]);
 
-  console.log(process.env.NODE_ENV);
-
   useEffect(() => {
     setSocket(socketIOClient(ENDPOINT));
   }, []);
@@ -37,8 +35,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    horn.play();
-
     if (!socket) return;
 
     socket.on("reconnect_attempt", () => {
