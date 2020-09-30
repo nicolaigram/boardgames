@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card, CardState, createCards, getNextCardState } from "../util/cards";
@@ -42,7 +43,8 @@ export default function Codenames() {
         )}
         <div className="board">
           {cards.map((card, index) => (
-            <div
+            <motion.div
+              whileTap={{ scale: 1.1 }}
               className={"word " + card.state}
               onClick={() => toggleCardState(index)}
             >
@@ -52,7 +54,7 @@ export default function Codenames() {
                   <span className="player-south">{card.word}</span>
                 </>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

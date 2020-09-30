@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 export default function Timer() {
   const startTime = 60;
@@ -31,6 +32,7 @@ export default function Timer() {
 
   return (
     <TimerStyled
+      whileTap={{ scale: 1.1 }}
       onClick={toggleTimer}
       percentage={(timeLeft / startTime) * 100}
     >
@@ -40,7 +42,7 @@ export default function Timer() {
   );
 }
 
-const TimerStyled: any = styled.div`
+const TimerStyled: any = styled(motion.div)`
   display: flex;
   align-items: center;
   position: relative;

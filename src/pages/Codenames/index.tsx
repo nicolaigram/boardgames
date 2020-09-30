@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { red } from "./util/colors";
@@ -13,33 +14,37 @@ export default function Codenames() {
       <div className="columns">
         <div className="col options">
           <h2>Language</h2>
-          <div
+          <motion.div
+            whileTap={{ scale: 1.1 }}
             className={"option" + (language === "da" ? " active" : "")}
             onClick={() => setLanguage("da")}
           >
             Danish
-          </div>
-          <div
+          </motion.div>
+          <motion.div
+            whileTap={{ scale: 1.1 }}
             className={"option" + (language === "en" ? " active" : "")}
             onClick={() => setLanguage("en")}
           >
             English
-          </div>
+          </motion.div>
         </div>
         <div className="col options">
           <h2>Version</h2>
-          <div
+          <motion.div
+            whileTap={{ scale: 1.1 }}
             className={"option" + (version === "standard" ? " active" : "")}
             onClick={() => setVersion("standard")}
           >
             Standard
-          </div>
-          <div
+          </motion.div>
+          <motion.div
+            whileTap={{ scale: 1.1 }}
             className={"option" + (version === "duet" ? " active" : "")}
             onClick={() => setVersion("duet")}
           >
             Duet
-          </div>
+          </motion.div>
         </div>
       </div>
       <h1>Game</h1>
