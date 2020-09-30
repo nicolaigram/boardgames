@@ -9,7 +9,7 @@ import Options from "./Options";
 import InfoPage from "./ErrorPages/InfoPage";
 const ENDPOINT =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:4001"
+    ? "http://192.168.8.105:4001"
     : "https://forsale.ngram.dk";
 const horn = new Audio(process.env.PUBLIC_URL + "/for-sale/party_horn.mp3");
 
@@ -23,7 +23,6 @@ export default function Home() {
   const [isBoard, setIsBoard] = useState(false);
   const [phase, setPhase] = useState("");
   const [sales, setSales] = useState([]);
-  const [clickedReset, setClickedReset] = useState(false);
 
   console.log(process.env.NODE_ENV);
 
@@ -91,18 +90,6 @@ export default function Home() {
     });
   }, [socket]);
 
-  const handleResetGame = () => {
-    if (!clickedReset) {
-      setClickedReset(true);
-      setTimeout(() => {
-        setClickedReset(false);
-      }, 3000);
-      return;
-    }
-    socket.emit("reset-game");
-    setClickedReset(false);
-  };
-
   if (info)
     return <InfoPage info={info} reset={() => socket.emit("reset-game")} />;
   if (isBoard)
@@ -138,13 +125,10 @@ export default function Home() {
           socket={socket}
           visible={isStarted}
           disabled={sales.length > 0}
+          phase={phase}
         />
 
         <Options socket={socket} visible={!isStarted} />
-
-        <button onClick={handleResetGame} id="reset-btn">
-          {!clickedReset ? "Reset Game" : "Are you sure?"}
-        </button>
       </div>
     </StyledPage>
   );
@@ -156,20 +140,28 @@ const StyledPage = styled.div`
   padding: 10px;
   padding-top: 40px;
   * {
-    font-size: 30px;
+    font-size: 26px;
   }
   .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
   }
   .island {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 10px;
+    &:not(:first-of-type) {
+      &::before {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #ccc;
+        margin: 40px 0;
+      }
+    }
   }
   #reset-btn {
-    margin-top: 60px;
     width: 100%;
   }
 `;

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import React from "react";
 
 export default function Card({
@@ -28,7 +29,11 @@ export default function Card({
   };
 
   return (
-    <StyledCard className={selected ? "selected" : ""} onClick={handleClick}>
+    <StyledCard
+      whileTap={{ scale: 1.05 }}
+      className={"card" + (selected ? " selected" : "")}
+      onClick={handleClick}
+    >
       <img src={imgPath()} alt="" />
     </StyledCard>
   );
@@ -41,7 +46,7 @@ const padValue = (id: number) => {
   return id;
 };
 
-const StyledCard: any = styled.div`
+const StyledCard: any = styled(motion.div)`
   flex: 0 1 48%;
   border: 1px solid black;
   margin-bottom: 10px;
@@ -60,6 +65,9 @@ const StyledCard: any = styled.div`
   img {
     height: 100%;
     width: 100%;
+    user-select: none;
+    touch-action: none;
+    pointer-events: none;
   }
   &.selected {
     filter: brightness(50%);

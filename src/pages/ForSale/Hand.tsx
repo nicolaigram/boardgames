@@ -2,9 +2,16 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
-export default function Hand({ player, socket, visible, disabled }: any) {
+export default function Hand({
+  player,
+  socket,
+  visible,
+  disabled,
+  phase,
+}: any) {
   const [selectedCard, setSelectedCard] = useState(-1);
   const handleSelect = (card: any) => {
+    if (phase !== "selling houses") return;
     setSelectedCard(card.id);
     socket.emit("select-card", card);
   };
@@ -17,6 +24,7 @@ export default function Hand({ player, socket, visible, disabled }: any) {
   }, [socket]);
 
   if (!visible) return null;
+  if (player.cards.length === 0) return null;
 
   return (
     <StyledHand className="island">
@@ -44,4 +52,13 @@ const StyledHand = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  .card {
+    margin-top: -150px;
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+    &:nth-of-type(2) {
+      margin-top: 0;
+    }
+  }
 `;

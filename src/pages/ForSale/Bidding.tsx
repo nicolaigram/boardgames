@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { green_med, red } from "../Codenames/util/colors";
+import Button from "./components/Button";
 
 export default function Bidding({ socket, player, visible }: any) {
   const [currentBid, setCurrentBid] = useState(0);
@@ -54,33 +57,33 @@ export default function Bidding({ socket, player, visible }: any) {
         </>
       )}
       <div className="buttons">
-        <button
+        <Button
           onClick={() => changeBid("increase")}
           id="up"
           disabled={isDisabled()}
         >
-          UP
-        </button>
+          <span>MORE</span>
+        </Button>
 
-        <button onClick={sendBid} id="bid" disabled={isDisabled()}>
-          BID
-        </button>
-
-        <button
+        <Button
           onClick={() => changeBid("decrease")}
           id="down"
           disabled={isDisabled()}
         >
-          DOWN
-        </button>
+          <span>LESS</span>
+        </Button>
 
-        <button
+        <Button onClick={sendBid} id="bid" disabled={isDisabled()}>
+          <span>BID</span>
+        </Button>
+
+        <Button
           onClick={() => socket.emit("pass")}
           id="pass"
           disabled={isDisabled()}
         >
-          PASS
-        </button>
+          <span>PASS</span>
+        </Button>
       </div>
     </StyledPage>
   );
@@ -91,16 +94,17 @@ const StyledPage = styled.div`
     text-align: center;
   }
   .buttons {
-    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
-    button {
-      height: 60px;
-      flex: 0 0 48%;
-      margin-bottom: 10px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 0;
-      border-radius: 8px;
+    #bid {
+      background-color: #31bd42;
+    }
+    #pass {
+      background-color: #e0352f;
+    }
+    #bid,
+    #pass {
+      flex: 0 0 100%;
     }
   }
 `;

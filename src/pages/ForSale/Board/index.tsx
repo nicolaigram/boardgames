@@ -16,6 +16,9 @@ export default function Board({
     return (
       <StyledPage>
         <h1>Waiting to start</h1>
+        <div id="game-box">
+          <img src={process.env.PUBLIC_URL + "/for-sale/box.jpg"} alt="" />
+        </div>
       </StyledPage>
     );
   return (
@@ -76,6 +79,14 @@ const StyledPage = styled.div`
       td {
         padding: 4px;
       }
+    }
+  }
+  #game-box {
+    width: 600px;
+    margin: 0 auto;
+    max-width: 80%;
+    img {
+      width: 100%;
     }
   }
 `;
