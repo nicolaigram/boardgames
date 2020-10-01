@@ -8,13 +8,14 @@ import { blue, green_gradient, red, sand } from "../util/colors";
 import Timer from "./Timer";
 
 export default function Codenames() {
-  const { language, version, cardset } = useParams<{
+  const { language, version, cardset, data } = useParams<{
     language: string;
     version: "standard" | "duet";
     cardset: string;
+    data: string;
   }>();
 
-  const [cards, setCards] = useState(createCards(language, cardset));
+  const [cards, setCards] = useState(createCards(language, cardset, data));
   const [turn, setTurn] = useState(9);
 
   const toggleCardState = (index: number) => {
@@ -119,6 +120,7 @@ const StyledPage = styled.div`
     width: 800px;
     height: 100%;
     .word {
+      height: 110px;
       font-size: 22px;
       @media screen and (max-height: 600px) {
         font-size: 16px;
@@ -137,6 +139,7 @@ const StyledPage = styled.div`
       user-select: none;
       overflow: hidden;
       span {
+        text-align: center;
         &.player-north {
           transform: rotateZ(180deg);
           font-style: italic;

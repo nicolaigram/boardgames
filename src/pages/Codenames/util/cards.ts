@@ -30,8 +30,17 @@ function shuffle(a: any[]) {
   return a;
 }
 
-export const createCards = (language: string, version: string): Card[] => {
-  const selectedWords = words[version];
+export const createCards = (
+  language: string,
+  version: string,
+  data: string
+): Card[] => {
+  let selectedWords: any[];
+  if (data) {
+    selectedWords = JSON.parse(atob(data));
+  } else {
+    selectedWords = words[version];
+  }
   const shuffledWords = shuffle(selectedWords);
   const cards = new Array(25).fill({}).map((card, index) => ({
     word: shuffledWords[index][language],

@@ -10,7 +10,7 @@ export default function CodenamesRouter() {
       <Route path={"/codenames/keycard/:version/:preset?"}>
         <KeyCard />
       </Route>
-      <Route path={"/codenames/game/:version/:language/:cardset"}>
+      <Route path={"/codenames/game/:version/:language/:cardset/:data?"}>
         <Codenames />
       </Route>
       <Route exact path={"/codenames"}>

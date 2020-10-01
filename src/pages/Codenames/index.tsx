@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ExternalData from "./ExternalData";
 import { red } from "./util/colors";
 
 export default function Codenames() {
@@ -61,6 +62,7 @@ export default function Codenames() {
           <Link to={`/codenames/game/${version}/${language}/deep`}>
             Deep Undercover
           </Link>
+          <ExternalData language={language} version={version} />
         </div>
       </div>
     </StyledPage>
@@ -68,7 +70,7 @@ export default function Codenames() {
 }
 
 const StyledPage = styled.div`
-  padding-top: 40px;
+  padding: 40px 0 80px;
   background: center url(${process.env.PUBLIC_URL}/codenames/bg.jpeg);
   background-size: cover;
   min-height: 100vh;
@@ -92,6 +94,12 @@ const StyledPage = styled.div`
     max-width: 800px;
     margin: 0 auto;
     margin-bottom: 20px;
+    input {
+      margin-bottom: 20px;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
   .col {
     padding: 0 10px;
