@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import Button from "../../ForSale/components/Button";
 import { Card, CardState, createCards, getNextCardState } from "../util/cards";
 import { blue, green_gradient, red, sand } from "../util/colors";
 import Timer from "./Timer";
@@ -35,8 +36,12 @@ export default function Codenames() {
         {version === "duet" && (
           <div className="turn-counter">
             <div className="buttons">
-              <button onClick={() => setTurn(turn + 1)}>↑</button>
-              <button onClick={() => setTurn(turn - 1)}>↓</button>
+              <Button onClick={() => setTurn(turn + 1)}>
+                <span>↑</span>
+              </Button>
+              <Button onClick={() => setTurn(turn - 1)}>
+                <span>↓</span>
+              </Button>
             </div>
             <span>Turns left: {turn}</span>
           </div>
@@ -88,9 +93,9 @@ const StyledPage = styled.div`
     transform: rotateZ(-90deg);
     background: rgba(255, 255, 255, 0.3);
     padding: 8px;
-    width: 250px;
+    width: 200px;
     span {
-      font-size: 40px;
+      font-size: 30px;
       text-align: center;
     }
     .buttons {
