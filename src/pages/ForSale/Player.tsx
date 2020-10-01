@@ -53,6 +53,7 @@ const StyledPage = styled.div`
   .name-input {
     position: relative;
     input {
+      outline: 0;
       border: 1px solid black;
       border-radius: 16px;
       width: 100%;
