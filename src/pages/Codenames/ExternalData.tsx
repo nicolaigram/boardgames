@@ -11,6 +11,11 @@ export default function ExternalData({ language, version }: any) {
       const result = await fetch(url + text);
       const words = await result.json();
       const formattedWords = words.map((word: any) => ({ en: word.word }));
+      if (words.length < 25) {
+        alert(`Only found ${words.length} words. Need at least 25.`);
+        console.log(words);
+        throw new Error(`Only found ${words.length} words. Need 25.`);
+      }
       history.push(
         `/codenames/game/${version}/${language}/_/${btoa(
           JSON.stringify(formattedWords)
