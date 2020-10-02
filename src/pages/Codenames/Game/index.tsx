@@ -145,6 +145,7 @@ const StyledPage = styled.div`
         &.player-north {
           transform: rotateZ(180deg);
           font-style: italic;
+          color: rgba(0, 0, 0, 0.5);
         }
       }
       &.guessed {
