@@ -22,6 +22,7 @@ export default function ExternalData({ language, version }: any) {
         )}`
       );
     } catch (error) {
+      alert("Something wrong in external service");
       console.log(error);
     }
   };
