@@ -72,6 +72,7 @@ export default function Codenames() {
 const StyledPage = styled.div`
   padding: 40px 0 80px;
   background: center url(${process.env.PUBLIC_URL}/codenames/bg.jpeg);
+  background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
   h1 {
