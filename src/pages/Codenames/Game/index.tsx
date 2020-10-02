@@ -121,7 +121,6 @@ const StyledPage = styled.div`
     height: 100%;
     .word {
       height: 110px;
-      font-size: 22px;
       @media screen and (max-height: 600px) {
         font-size: 16px;
       }
@@ -139,7 +138,10 @@ const StyledPage = styled.div`
       user-select: none;
       overflow: hidden;
       span {
+        font-size: 18px;
+        font-weight: 400;
         text-align: center;
+        text-transform: uppercase;
         &.player-north {
           transform: rotateZ(180deg);
           font-style: italic;
