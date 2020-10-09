@@ -64,7 +64,11 @@ const createRandomDuetKeys = () => {
     settings.counts.spy - settings.counts.spyOverlap
   ) {
     const randomPos = randomPosition();
-    if (b[randomPos] === KeyState.BYSTANDER && a[randomPos] !== KeyState.SPY) {
+    if (
+      b[randomPos] === KeyState.BYSTANDER &&
+      a[randomPos] !== KeyState.SPY &&
+      a[randomPos] !== KeyState.ASSASSIN
+    ) {
       b[randomPos] = KeyState.SPY;
     }
   }
@@ -72,7 +76,11 @@ const createRandomDuetKeys = () => {
   // Create overlapping spies
   while (countKeyCards(b, KeyState.SPY) < settings.counts.spy) {
     const randomPos = randomPosition();
-    if (b[randomPos] === KeyState.BYSTANDER && a[randomPos] === KeyState.SPY) {
+    if (
+      b[randomPos] === KeyState.BYSTANDER &&
+      a[randomPos] === KeyState.SPY &&
+      a[randomPos] !== KeyState.ASSASSIN
+    ) {
       b[randomPos] = KeyState.SPY;
     }
   }
@@ -82,11 +90,16 @@ const createRandomDuetKeys = () => {
     const randomPos = randomPosition();
     if (
       b[randomPos] === KeyState.BYSTANDER &&
-      a[randomPos] !== KeyState.ASSASSIN
+      a[randomPos] !== KeyState.ASSASSIN &&
+      a[randomPos] !== KeyState.SPY
     ) {
       b[randomPos] = KeyState.ASSASSIN;
     }
   }
+
+  checkSpyOverlap(a, b);
+  printKeyCard(a);
+  printKeyCard(b);
 
   return [
     a,
@@ -159,17 +172,30 @@ export const getKeys = (gameId: string, version: string): any => {
 //   });
 // };
 
-// const printKeyCard = (keys: KeyState[]) => {
-//   let temp = "";
-//   for (let i = 0; i < 25; i++) {
-//     if (i % 5 === 0) {
-//       console.log(temp);
-//       temp = "";
-//     }
-//     temp += KeyState[keys[i]].substr(0, 3) + "\t";
-//   }
-//   console.log(temp);
-// };
+const checkSpyOverlap = (a: any, b: any) => {
+  a.forEach((key: KeyState, index: number) => {
+    if (key === KeyState.ASSASSIN && b[index] === KeyState.SPY) {
+      alert("Overlap");
+      console.log(index + " Assasin on A while spy on B ");
+    }
+    if (key === KeyState.SPY && b[index] === KeyState.ASSASSIN) {
+      alert("Overlap");
+      console.log(index + " Assasin on B while spy on A");
+    }
+  });
+};
+
+const printKeyCard = (keys: KeyState[]) => {
+  let temp = "";
+  for (let i = 0; i < 25; i++) {
+    if (i % 5 === 0) {
+      console.log(temp);
+      temp = "";
+    }
+    temp += KeyState[keys[i]].substr(0, 3) + "\t";
+  }
+  console.log(temp);
+};
 
 // const printCommonSpies = (a: KeyState[], b: KeyState[]) => {
 //   let count = 0;
