@@ -10,6 +10,7 @@ export default function Home() {
       <Link to={"/munchkin"}>Munchkin</Link>
       <Link to={"/codenames"}>Codenames</Link>
       <Link to={"/for-sale"}>For Sale</Link>
+      <Link to={"/7wonders-duel-ai"}>7 Wonders Duel AI</Link>
     </StyledPage>
   );
 }

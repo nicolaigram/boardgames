@@ -9,6 +9,7 @@ import StarRealms from "./pages/StarRealms";
 import Munchkin from "./pages/Munchkin";
 import ForSale from "./pages/ForSale";
 import CodenamesRouter from "./pages/Codenames/router";
+import SevenWondersDuelAi from "./pages/SevenWondersDuelAi/"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,9 @@ ReactDOM.render(
       </Route>
       <Route path={"/king-of-new-york"}>
         <KingOfNewYork />
+      </Route>
+      <Route path={"/7wonders-duel-ai"}>
+        <SevenWondersDuelAi />
       </Route>
       <Route exact path={"/"}>
         <Home />
