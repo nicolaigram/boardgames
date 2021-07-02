@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [heroImg, setHeroImg] = useState<any>(null)
   const [cardImg, setCardImg] = useState<any>(null)
+
+  useEffect(() => {
+    window.addEventListener("keydown", keyDownHandler);
+    return () => window.removeEventListener("keydown", keyDownHandler)
+  },[])
+
+  const keyDownHandler = (e: any) => {
+    const rKey = 82;
+    const spaceKey = 32;
+    console.log(e.keyCode)
+    if (e.keyCode === spaceKey) handleClickRandomCard()
+    if (e.keyCode === rKey) handleClickRandomHero()
+  }
 
   const handleClickRandomHero = () => {
     const randomHeroImg = getRandomHero()
@@ -23,9 +36,9 @@ function App() {
       margin: "0 auto"
     }}>
       {heroImg && <img src={heroImg} alt="hero" />}
-      <button onClick={handleClickRandomHero}>Random Hero</button>
+      <button onClick={handleClickRandomHero}>Random Hero (R)</button>
       {cardImg && <img src={cardImg} alt="card" />}
-      <button onClick={handleClickRandomCard}>Random Card</button>
+      <button onClick={handleClickRandomCard}>Random Card (Space)</button>
     </div>
   );
 }
