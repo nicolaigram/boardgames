@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import QRCode from "react-qr-code";
 import { useParams } from "react-router-dom";
 import Button from "../../ForSale/components/Button";
+import { getKeys, KeyState } from "../KeyCard/util/keys";
 import { Card, CardState, createCards, getNextCardState } from "../util/cards";
-import { blue, green_gradient, red, sand } from "../util/colors";
+import { blue, green_gradient, red, sand, black } from "../util/colors";
 import Timer from "./Timer";
 
 export default function Codenames() {
@@ -17,10 +19,32 @@ export default function Codenames() {
 
   const [cards, setCards] = useState(createCards(language, cardset, data));
   const [turn, setTurn] = useState(9);
+  const [gameId] = useState("");
+  const [keys, setKeys] = useState<KeyState[]>([]);
+  const [QRContent, setQRContent] = useState<string>("")
+
+  const keyToCardMapping: any = {
+    [KeyState.RED]: CardState.guessedRed,
+    [KeyState.BLUE]: CardState.guessedBlue,
+    [KeyState.BYSTANDER]: CardState.guessedBystander,
+    [KeyState.ASSASSIN]: CardState.guessedAssasin
+  }
+
+  const resetGame = (e: any) => {
+    if (e) e.preventDefault();
+    const [generatedKeys, encoded_url] = getKeys(gameId, version);
+    if (!generatedKeys) return;
+    setKeys(generatedKeys);
+    setQRContent(encoded_url)
+  };
+
+  useEffect(() => {
+    resetGame(null)
+  }, [])
 
   const toggleCardState = (index: number) => {
     const temp = [...cards];
-    temp[index].state = getNextCardState[version](temp[index].state);
+    temp[index].state === CardState.default ? temp[index].state = keyToCardMapping[keys[index]] : temp[index].state = CardState.default
     setCards(temp);
   };
 
@@ -29,6 +53,29 @@ export default function Codenames() {
     // if (card.state === CardState.guessedSouth) return true;
     return false;
   };
+
+  const whoGuesFirst = () => {
+    let redCount = 0
+    let blueCount = 0
+    keys.forEach((key: any) => {
+      if (key === KeyState.RED) redCount++
+      if (key === KeyState.BLUE) blueCount++
+    })
+    if (blueCount > redCount) {
+      return "Red"
+    } else {
+      return "Blue"
+    }
+  }
+
+  if (QRContent) return <StyledPage>
+    <div className="start-screen">
+      <h1>{whoGuesFirst()} goes first!</h1>
+      <h2>Scan the QR code with your phone</h2>
+      <QRCode value={QRContent} />
+      <Button onClick={() => setQRContent("")} >Start</Button>
+    </div>
+  </StyledPage>
 
   return (
     <StyledPage>
@@ -86,6 +133,21 @@ const StyledPage = styled.div`
     @media screen and (max-height: 600px) {
       height: 90vh;
     }
+  }
+  .start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .start-screen h1,
+  .start-screen h2 {
+    color: white;
+    text-shadow: 1px 1px 3px #333;
+  }
+  .start-screen button {
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 15px;
   }
   .turn-counter {
     display: flex;
@@ -156,6 +218,10 @@ const StyledPage = styled.div`
           background: center url(${process.env.PUBLIC_URL}/codenames/spy.png);
           background-size: contain;
         }
+        &.assasin::before {
+          background: center url(${process.env.PUBLIC_URL}/codenames/spy.png);
+          background-size: contain;
+        }
         &.bystander::before {
           background: bottom
             url(${process.env.PUBLIC_URL}/codenames/bystander.png);
@@ -163,6 +229,7 @@ const StyledPage = styled.div`
           background-size: 45%;
         }
         &.spy::before,
+        &.assasin::before,
         &.bystander::before {
           opacity: 0.5;
           background-repeat: no-repeat;
@@ -183,6 +250,9 @@ const StyledPage = styled.div`
         }
         &.bystander {
           background: ${sand};
+        }
+        &.assasin {
+          background: ${black};
         }
       }
       &.north::before,

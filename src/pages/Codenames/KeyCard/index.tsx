@@ -16,6 +16,7 @@ export default function KeyCard() {
     if (preset) {
       let data = JSON.parse(atob(preset));
       setKeys(data);
+      console.log("preset" + preset)
     }
   }, [preset]);
 

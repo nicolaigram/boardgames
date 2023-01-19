@@ -111,11 +111,6 @@ const createRandomStandardKeys = () => {
   const [redCount, blueCount] = shuffle([8, 9]);
   const bystanderCount = 25 - 8 - 9 - 1; // 7
   const assasinCount = 1;
-  if (redCount > blueCount) {
-    alert("Red goes first");
-  } else {
-    alert("Blue goes first");
-  }
   const keys = [
     ...Array(redCount).fill(KeyState.RED),
     ...Array(blueCount).fill(KeyState.BLUE),
@@ -127,7 +122,12 @@ const createRandomStandardKeys = () => {
 
 export const getKeys = (gameId: string, version: string): any => {
   if (version === "standard") {
-    return [createRandomStandardKeys(), ""];
+    const keys = createRandomStandardKeys()
+    let url = window.location.href + "/";
+    url = url.split("/").slice(0, url.split("/").length - 5).join("/") + "/keycard/standard/"
+    url += btoa(JSON.stringify(keys));
+    return [keys, url];
+    
   } else if (version === "duet") {
     const [a, b] = createRandomDuetKeys();
     let url = window.location.href + "/";

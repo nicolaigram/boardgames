@@ -9,6 +9,7 @@ export enum CardState {
   guessedRed = "guessed spy red",
   guessedBlue = "guessed spy blue",
   guessedBystander = "guessed bystander",
+  guessedAssasin = "guessed assasin",
   bystanderNorth = "bystander north",
   bystanderSouth = "bystander south",
   bystanderBoth = "bystander both",
