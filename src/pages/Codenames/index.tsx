@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ExternalData from "./ExternalData";
 import { red } from "./util/colors";
+import { useCustomWordList } from "./util/useCustomWordList";
 
 export default function Codenames() {
   const [language, setLanguage] = useState("da");
   const [version, setVersion] = useState("standard");
+  const customWordLists = useCustomWordList()
 
   return (
     <StyledPage>
@@ -62,6 +64,13 @@ export default function Codenames() {
           <Link to={`/codenames/game/${version}/${language}/deep`}>
             Deep Undercover
           </Link>
+          {language === "da" && (
+            Object.keys(customWordLists).map((key: any) => (
+              <Link to={`/codenames/game/${version}/${language}/${key}`}>
+                {key}
+              </Link>
+            ))
+          )}
           <ExternalData language={language} version={version} />
         </div>
       </div>

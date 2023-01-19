@@ -1,8 +1,3 @@
-const words: any = {
-  default: require("./data/default.json"),
-  deep: require("./data/deep.json"),
-};
-
 export enum CardState {
   default = "default",
   guessedGreen = "guessed spy green",
@@ -33,16 +28,19 @@ function shuffle(a: any[]) {
 
 export const createCards = (
   language: string,
-  version: string,
+  words: string[],
   data: string
 ): Card[] => {
   let selectedWords: any[];
   if (data) {
     selectedWords = JSON.parse(atob(data));
   } else {
-    selectedWords = words[version];
+    selectedWords = words;
   }
+  console.log(selectedWords)
+  if (selectedWords.length < 25) {alert("Less than 25 cards!!!"); return []}
   const shuffledWords = shuffle(selectedWords);
+  console.log(shuffledWords)
   const cards = new Array(25).fill({}).map((card, index) => ({
     word: shuffledWords[index][language],
     state: CardState.default,

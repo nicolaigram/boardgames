@@ -7,6 +7,7 @@ import Button from "../../ForSale/components/Button";
 import { getKeys, KeyState } from "../KeyCard/util/keys";
 import { Card, CardState, createCards, getNextCardState } from "../util/cards";
 import { blue, green_gradient, red, sand, black } from "../util/colors";
+import { useCustomWordList } from "../util/useCustomWordList";
 import Timer from "./Timer";
 
 export default function Codenames() {
@@ -17,11 +18,12 @@ export default function Codenames() {
     data: string;
   }>();
 
-  const [cards, setCards] = useState(createCards(language, cardset, data));
+  const [cards, setCards] = useState<Card[]>([]);
   const [turn, setTurn] = useState(9);
   const [gameId] = useState("");
   const [keys, setKeys] = useState<KeyState[]>([]);
   const [QRContent, setQRContent] = useState<string>("")
+  const customWordList: any = useCustomWordList()
 
   const keyToCardMapping: any = {
     [KeyState.RED]: CardState.guessedRed,
@@ -41,6 +43,18 @@ export default function Codenames() {
   useEffect(() => {
     resetGame(null)
   }, [])
+
+  useEffect(() => {
+    const words: any = {
+      default: require("../util//data/default.json"),
+      deep: require("../util/data/deep.json"),
+      ...customWordList,
+    }
+    if (!(cardset in words)) return
+    const allCards: string[] = words[cardset]
+    const tempCards: any = createCards(language, allCards, data)
+    setCards(tempCards)
+  }, [customWordList])
 
   const toggleCardState = (index: number) => {
     const temp = [...cards];
