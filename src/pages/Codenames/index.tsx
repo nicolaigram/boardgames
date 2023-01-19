@@ -65,7 +65,7 @@ export default function Codenames() {
             Deep Undercover
           </Link>
           {language === "da" && (
-            Object.keys(customWordLists).map((key: any) => (
+            Object.keys(customWordLists).filter((key: any) => customWordLists[key].length >= 25).map((key: any) => (
               <Link to={`/codenames/game/${version}/${language}/${key}`}>
                 {key}
               </Link>
