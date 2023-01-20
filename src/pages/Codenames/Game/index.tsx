@@ -56,11 +56,22 @@ export default function Codenames() {
     setCards(tempCards)
   }, [customWordList])
 
-  const toggleCardState = (index: number) => {
+  const toggleCardState = (index: number, version: string) => {
+    if (version === "duet") toggleCardStateDuet(index)
+    if (version === "standard") toggleCardStateStandard(index)
+  };
+
+  const toggleCardStateStandard = (index: number) => {
     const temp = [...cards];
     temp[index].state === CardState.default ? temp[index].state = keyToCardMapping[keys[index]] : temp[index].state = CardState.default
     setCards(temp);
-  };
+  }
+
+  const toggleCardStateDuet = (index: number) => {
+    const temp = [...cards];
+    temp[index].state = getNextCardState[version](temp[index].state);
+    setCards(temp);
+  }
 
   const isGuessed = (card: Card) => {
     if (card.state === CardState.guessedGreen) return true;
@@ -113,7 +124,7 @@ export default function Codenames() {
             <motion.div
               whileTap={{ scale: 1.1 }}
               className={"word " + card.state}
-              onClick={() => toggleCardState(index)}
+              onClick={() => toggleCardState(index, version)}
             >
               {!isGuessed(card) && (
                 <>
